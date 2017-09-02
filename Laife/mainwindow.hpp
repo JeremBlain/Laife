@@ -21,10 +21,14 @@ public:
 
     void paintEvent(QPaintEvent *event);
 
+public slots:
+    void time_ring();
+
 private:
     Ui::MainWindow *ui;
 
     GameState gameState;
+    QTimer *timer;
 };
 
 #endif // MAINWINDOW_HPP

@@ -10,6 +10,7 @@ public:
     Specie(int pos_x, int pos_y);
 
     virtual void draw_sprite(QPainter *painter) = 0;
+    void move(int dx, int dy);
 
 protected :
     int x, y; //coords

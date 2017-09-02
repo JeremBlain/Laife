@@ -8,6 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     gameState.create_test_game();
+
+    timer = new QTimer();
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
+    timer->start(2000);
+
     update();
 }
 
@@ -25,4 +30,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
     {
         specie->draw_sprite(&painter);
     }
+}
+
+void MainWindow::time_ring()
+{
+    gameState.move();
+    update();
 }
