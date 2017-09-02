@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "animal_specie.hpp"
+#include "vegetal_specie.hpp"
+
 namespace Ui {
 class MainWindow;
 }
@@ -14,6 +17,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    void paintEvent(QPaintEvent *event);
 
 private:
     Ui::MainWindow *ui;
