@@ -5,6 +5,7 @@
 
 #include "animal_specie.hpp"
 #include "vegetal_specie.hpp"
+#include "gamestate.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +23,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    GameState gameState;
 };
 
 #endif // MAINWINDOW_HPP

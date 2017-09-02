@@ -27,11 +27,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     specie.cpp \
     animal_specie.cpp \
-    vegetal_specie.cpp
+    vegetal_specie.cpp \
+    gamestate.cpp
 
 HEADERS  += mainwindow.hpp \
     specie.hpp \
     animal_specie.hpp \
-    vegetal_specie.hpp
+    vegetal_specie.hpp \
+    gamestate.hpp
 
 FORMS    += mainwindow.ui
