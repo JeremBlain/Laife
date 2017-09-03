@@ -2,6 +2,7 @@
 #define SPECIE_HPP
 
 #include <QPainter>
+#include "enumerations.hpp"
 
 class Specie
 {
@@ -14,6 +15,8 @@ public:
 
 protected :
     int x, y; //coords
+    Action action_state;
+
 };
 
 #endif // SPECIE_HPP

@@ -34,6 +34,7 @@ HEADERS  += mainwindow.hpp \
     specie.hpp \
     animal_specie.hpp \
     vegetal_specie.hpp \
-    gamestate.hpp
+    gamestate.hpp \
+    enumerations.hpp
 
 FORMS    += mainwindow.ui
