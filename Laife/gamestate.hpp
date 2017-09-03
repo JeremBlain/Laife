@@ -23,8 +23,8 @@ public:
     void display_cos_sin();
 
     //array for storing cos() and sin() value
-    float COS[32];
-    float SIN[32];
+    float COS[33];
+    float SIN[33];
 };
 
 #endif // GAMESTATE_HPP

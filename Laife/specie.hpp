@@ -12,12 +12,13 @@ public:
     Specie(int pos_x, int pos_y);
 
     virtual void draw_sprite(QPainter *painter) = 0;
-    void move(int dx, int dy);
+    void move(int dv, float COS[], float SIN[]);
     virtual void change_behavior() = 0;
 
 protected :
     int x, y; //coords
     Action action_state;
+    float direction_angle; //direction to move in radian
 
 };
 

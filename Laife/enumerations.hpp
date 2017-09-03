@@ -15,6 +15,7 @@
 namespace Constant
 {
     const int NUMBER_ACTIONS = 10; //don't forget to update it when you add or remove an action... !
+    const float PI = 3.1415;
 }
 
 
