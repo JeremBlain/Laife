@@ -3,6 +3,7 @@
 
 #include <QPainter>
 #include "enumerations.hpp"
+#include "iostream"
 
 class Specie
 {
@@ -12,6 +13,7 @@ public:
 
     virtual void draw_sprite(QPainter *painter) = 0;
     void move(int dx, int dy);
+    virtual void change_behavior() = 0;
 
 protected :
     int x, y; //coords

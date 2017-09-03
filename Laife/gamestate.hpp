@@ -15,9 +15,8 @@ public:
 
     /** This function has test purpose. Only for testing some parameters and functions */
     void create_test_game();
-
- public slots :
     void move();
+    void change_behavior();
 };
 
 #endif // GAMESTATE_HPP

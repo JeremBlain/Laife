@@ -10,6 +10,7 @@ public:
     vegetal_specie(int pos_x, int pos_y);
 
     void draw_sprite(QPainter *painter);
+    void change_behavior();
 };
 
 #endif // VEGETAL_SPECIE_HPP

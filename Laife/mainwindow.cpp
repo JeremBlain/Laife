@@ -7,11 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    srand(time(NULL));
+
     gameState.create_test_game();
 
     timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
-    timer->start(2000);
+    timer->start(500);
 
     update();
 }
@@ -34,6 +36,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 void MainWindow::time_ring()
 {
+    gameState.change_behavior();
     gameState.move();
     update();
 }

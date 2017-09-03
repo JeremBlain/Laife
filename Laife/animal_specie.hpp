@@ -11,6 +11,7 @@ public:
     animal_specie(int pos_x, int pos_y);
 
     void draw_sprite(QPainter *painter);
+    void change_behavior();
 };
 
 #endif // ANIMAL_SPECIE_HPP

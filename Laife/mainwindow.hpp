@@ -2,6 +2,7 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include "time.h"
 
 #include "animal_specie.hpp"
 #include "vegetal_specie.hpp"

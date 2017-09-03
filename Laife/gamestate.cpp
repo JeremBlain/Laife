@@ -1,9 +1,7 @@
 #include "gamestate.hpp"
 
 GameState::GameState()
-{
-
-}
+{}
 
 
 void GameState::create_test_game()
@@ -18,6 +16,14 @@ void GameState::move()
 {
     for(auto &specie : species_array)
     {
-        specie->move(5,5);
+        specie->move(3,3);
+    }
+}
+
+void GameState::change_behavior()
+{
+    for(auto &specie : species_array)
+    {
+        specie->change_behavior();
     }
 }
