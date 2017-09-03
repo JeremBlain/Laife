@@ -17,6 +17,14 @@ public:
     void create_test_game();
     void move();
     void change_behavior();
+    void fill_up_cos_sin_array();
+
+    //this function has only a test purpose, to see if the value of cos and sin are coherent
+    void display_cos_sin();
+
+    //array for storing cos() and sin() value
+    float COS[32];
+    float SIN[32];
 };
 
 #endif // GAMESTATE_HPP

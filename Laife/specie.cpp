@@ -18,7 +18,6 @@ void Specie::move(int dx, int dy)
 {
     if(action_state == Action::Move)
     {
-        std::cout<<"Moving"<<std::endl;
         this->x += dx;
         this->y += dy;
     }
