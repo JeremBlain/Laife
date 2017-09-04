@@ -30,7 +30,7 @@ void animal_specie::change_behavior()
     if(action_state == Action::Rest && probability < 5 && probability > 1)
     {
         action_state = Action::Move;
-        direction_angle = (rand()%180)/180.0f*2*Constant::PI;
+        direction_angle = rand()*2*Constant::PI;
     }
 
     if(action_state == Action::Move && probability == 1)

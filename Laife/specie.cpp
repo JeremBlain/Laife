@@ -13,7 +13,7 @@ Specie::Specie() : x(100), y(100), action_state(Action::Rest), direction_angle(0
 Specie::Specie(int pos_x, int pos_y, int h) : x(pos_x), y(pos_y), action_state(Action::Rest),
                                        weight(10), height(h), gender(Gender::Male), age(0)
 {
-    direction_angle = (rand()%180)/180.0f*2*Constant::PI;
+    direction_angle = rand()*2*Constant::PI;
 }
 
 void Specie::move(int dv, float COS[])
