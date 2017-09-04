@@ -1,11 +1,16 @@
 #include "animal_specie.hpp"
 
-animal_specie::animal_specie() : Specie(250, 60)
+animal_specie::animal_specie() : Specie(250, 60, 24),
+                                 hunger(100),
+                                 thirst(100),
+                                 hapiness(100),
+                                 tiredness(100)
 {
 
 }
 
-animal_specie::animal_specie(int pos_x, int pos_y) : Specie(pos_x, pos_y)
+animal_specie::animal_specie(int pos_x, int pos_y) : Specie(pos_x, pos_y, 24),
+                                                     hunger(100), thirst(100), hapiness(100), tiredness(100)
 {
 
 }
@@ -15,7 +20,7 @@ void animal_specie::draw_sprite(QPainter *painter)
     QBrush brush(Qt::red);
     painter->setBrush(brush);
 
-    painter->drawEllipse(x-25,y-25, 50,50);
+    painter->drawEllipse(x-height/2,y-height/2, height,height);
 }
 
 void animal_specie::change_behavior()

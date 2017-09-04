@@ -9,7 +9,7 @@ class Specie
 {
 public:
     Specie();
-    Specie(int pos_x, int pos_y);
+    Specie(int pos_x, int pos_y, int h);
 
     virtual void draw_sprite(QPainter *painter) = 0;
     void move(int dv, float COS[], float SIN[]);
@@ -19,6 +19,13 @@ protected :
     int x, y; //coords
     Action action_state;
     float direction_angle; //direction to move in radian
+
+
+    // Caracteristics :
+    int weight;
+    int height;
+    Gender gender;
+    int age;
 
 };
 

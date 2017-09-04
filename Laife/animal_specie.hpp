@@ -12,6 +12,15 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
+
+private :
+
+    // Needs : from 0 to 100, with 0 = need, 100 = full and doesn't need
+    int hunger;
+    int thirst;
+    int hapiness;
+    int tiredness;
+
 };
 
 #endif // ANIMAL_SPECIE_HPP
