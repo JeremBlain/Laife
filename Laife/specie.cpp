@@ -4,7 +4,7 @@
  *
  * */
 
-Specie::Specie() : x(50), y(50), action_state(Action::Rest), direction_angle(0)
+Specie::Specie() : x(100), y(100), action_state(Action::Rest), direction_angle(0)
 {
 
 }
