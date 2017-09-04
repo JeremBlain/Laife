@@ -12,7 +12,7 @@ public:
     Specie(int pos_x, int pos_y, int h);
 
     virtual void draw_sprite(QPainter *painter) = 0;
-    void move(int dv, float COS[], float SIN[]);
+    void move(int dv, float COS[]);
     virtual void change_behavior() = 0;
 
 protected :

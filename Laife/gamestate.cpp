@@ -16,7 +16,7 @@ void GameState::move()
 {
     for(auto &specie : species_array)
     {
-        specie->move(3, COS, SIN);
+        specie->move(3, COS);
     }
 }
 
@@ -33,7 +33,6 @@ void GameState::fill_up_cos_sin_array()
     for(int i=0; i<=32; i++)
     {
         COS[i] = cos(Constant::PI*i/32);
-        SIN[i] = sin(Constant::PI/2 + Constant::PI*i/32);
     }
 }
 
@@ -43,7 +42,7 @@ void GameState::display_cos_sin()
 {
     for(int i=0; i<=32; i++)
     {
-        std::cout<<"Cos("<<i<<") = "<<COS[i]<<" ; Sin("<<i<<") = "<<SIN[i]<<std::endl;
+        std::cout<<"Cos("<<i<<") = "<<COS[i]<<std::endl;
     }
 }
 

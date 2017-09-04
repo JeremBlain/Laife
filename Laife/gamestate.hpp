@@ -24,7 +24,6 @@ public:
 
     //array for storing cos() and sin() value
     float COS[33];
-    float SIN[33];
 };
 
 #endif // GAMESTATE_HPP

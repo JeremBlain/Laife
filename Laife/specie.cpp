@@ -16,13 +16,13 @@ Specie::Specie(int pos_x, int pos_y, int h) : x(pos_x), y(pos_y), action_state(A
     direction_angle = (rand()%180)/180.0f*2*Constant::PI;
 }
 
-void Specie::move(int dv, float COS[], float SIN[])
+void Specie::move(int dv, float COS[])
 {
     if(action_state == Action::Move)
     {
         int i = direction_angle*32/(Constant::PI);
 
-        this->x += dv*COS[i%32];
-        this->y += dv*SIN[ (i+16)%32];
+        this->x += dv*COS[i%33];
+        this->y += dv*COS[ (i+16)%33];
     }
 }
