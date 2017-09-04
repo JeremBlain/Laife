@@ -29,5 +29,5 @@ void vegetal_specie::change_behavior()
         action_state = Action::Move;
 
     if(action_state == Action::Move && probability == 1)
-        std::cout<<"Action changed to Rest"<<std::endl;
+        action_state = Action::Rest;
 }

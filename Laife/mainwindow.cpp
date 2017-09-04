@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
-    timer->start(500);
+    timer->start(400);
 
     update();
 }
