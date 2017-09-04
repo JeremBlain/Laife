@@ -22,12 +22,4 @@ void vegetal_specie::draw_sprite(QPainter *painter)
 void vegetal_specie::change_behavior()
 {
     //do nothing for the moment
-
-    int probability = rand() % 10; //range from 0 to 99
-
-    if(action_state == Action::Rest && probability < 5 && probability > 1)
-        action_state = Action::Move;
-
-    if(action_state == Action::Move && probability == 1)
-        action_state = Action::Rest;
 }
