@@ -8,7 +8,7 @@ class AnimalSpecie : public Specie
 {
 public:
     AnimalSpecie();
-    AnimalSpecie(int pos_x, int pos_y);
+    AnimalSpecie(int pos_x, int pos_y, Gender g);
 
     void draw_sprite(QPainter *painter);
     void change_behavior();

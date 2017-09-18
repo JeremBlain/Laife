@@ -9,7 +9,7 @@ class Specie
 {
 public:
     Specie();
-    Specie(int pos_x, int pos_y, int h);
+    Specie(int pos_x, int pos_y, int h, Gender g);
 
     virtual void draw_sprite(QPainter *painter) = 0;
     virtual void change_behavior() = 0;
