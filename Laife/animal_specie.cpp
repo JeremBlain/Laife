@@ -36,3 +36,8 @@ void animal_specie::change_behavior()
     if(action_state == Action::Move && probability == 1)
         action_state = Action::Rest;
 }
+
+void animal_specie::breed(Specie male)
+{
+
+}

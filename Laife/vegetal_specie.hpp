@@ -11,6 +11,7 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
+    void breed(Specie male);
 };
 
 #endif // VEGETAL_SPECIE_HPP

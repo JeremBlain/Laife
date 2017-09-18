@@ -23,3 +23,8 @@ void vegetal_specie::change_behavior()
 {
     //do nothing for the moment
 }
+
+void vegetal_specie::breed(Specie male)
+{
+
+}

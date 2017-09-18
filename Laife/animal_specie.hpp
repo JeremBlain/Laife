@@ -12,6 +12,7 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
+    void breed(Specie male);
 
 private :
 
