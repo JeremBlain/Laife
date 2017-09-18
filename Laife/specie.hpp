@@ -17,6 +17,9 @@ public:
 
     void move(int dv, float COS[]);
 
+    // GETTER & SETTER
+    Gender get_gender();
+
 protected :
     int x, y; //coords
     Action action_state;

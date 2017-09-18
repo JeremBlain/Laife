@@ -26,3 +26,8 @@ void Specie::move(int dv, float COS[])
         this->y += dv*COS[ (i+16)%33];
     }
 }
+
+Gender Specie::get_gender()
+{
+    return gender;
+}
