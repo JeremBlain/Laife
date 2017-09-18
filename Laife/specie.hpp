@@ -13,7 +13,7 @@ public:
 
     virtual void draw_sprite(QPainter *painter) = 0;
     virtual void change_behavior() = 0;
-    virtual void breed(Specie male) = 0;
+    virtual Specie* breed(Specie &male) = 0;
 
     void move(int dv, float COS[]);
 

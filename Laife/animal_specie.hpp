@@ -4,15 +4,15 @@
 
 #include "specie.hpp"
 
-class animal_specie : public Specie
+class AnimalSpecie : public Specie
 {
 public:
-    animal_specie();
-    animal_specie(int pos_x, int pos_y);
+    AnimalSpecie();
+    AnimalSpecie(int pos_x, int pos_y);
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
-    void breed(Specie male);
+    Specie* breed(Specie &male);
 
 private :
 

@@ -3,15 +3,15 @@
 
 #include "specie.hpp"
 
-class vegetal_specie : public Specie
+class VegetableSpecie : public Specie
 {
 public:
-    vegetal_specie();
-    vegetal_specie(int pos_x, int pos_y);
+    VegetableSpecie();
+    VegetableSpecie(int pos_x, int pos_y);
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
-    void breed(Specie male);
+    Specie* breed(Specie &male);
 };
 
 #endif // VEGETAL_SPECIE_HPP
