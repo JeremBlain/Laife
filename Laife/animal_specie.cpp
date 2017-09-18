@@ -39,7 +39,8 @@ void AnimalSpecie::change_behavior()
 
 Specie* AnimalSpecie::breed(Specie &male)
 {
-    if(gender == Gender::Female) //this is the female which gives the birth
+    //this is the female which gives the birth and we need the other specie to be a male
+    if(gender == Gender::Female && male.get_gender() == Gender::Male)
     {
         AnimalSpecie* new_born = new AnimalSpecie(x+15, y+15);
         return new_born;
