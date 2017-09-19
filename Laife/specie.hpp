@@ -21,10 +21,13 @@ public:
 
     // GETTER & SETTER
     Gender get_gender();
+    Action get_action_state();
+    int get_x();
+    int get_y();
 
 protected :
     int x, y; //coords
-    Action action_state;
+    Action action_state; //Behavior of the specie
     float direction_angle; //direction to move in radian
 
 

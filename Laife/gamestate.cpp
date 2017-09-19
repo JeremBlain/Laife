@@ -8,7 +8,8 @@ void GameState::move()
 {
     for(auto &specie : animals_array)
     {
-        specie->move(3, COS);
+        if(specie->get_action_state() == Action::Move)
+            specie->move(3, COS);
     }
 }
 

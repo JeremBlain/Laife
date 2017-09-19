@@ -22,16 +22,29 @@ Specie::~Specie()
 
 void Specie::move(int dv, float COS[])
 {
-    if(action_state == Action::Move)
-    {
         int i = direction_angle*32/(Constant::PI);
 
         this->x += dv*COS[i%33];
         this->y += dv*COS[ (i+16)%33];
-    }
 }
 
 Gender Specie::get_gender()
 {
     return gender;
 }
+
+Action Specie::get_action_state()
+{
+    return action_state;
+}
+
+int Specie::get_x()
+{
+    return x;
+}
+
+int Specie::get_y()
+{
+    return y;
+}
+
