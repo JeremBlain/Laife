@@ -4,14 +4,6 @@ GameState::GameState()
 {}
 
 
-void GameState::create_test_game()
-{
-    species_array.push_back(new AnimalSpecie());
-    species_array.push_back(new VegetableSpecie());
-    species_array.push_back(new AnimalSpecie(200, 220) );
-    species_array.push_back(new VegetableSpecie(333, 450) );
-}
-
 void GameState::move()
 {
     for(auto &specie : species_array)
@@ -46,3 +38,16 @@ void GameState::display_cos_sin()
     }
 }
 
+
+void GameState::create_test_game()
+{
+    species_array.push_back(new AnimalSpecie());
+    species_array.push_back(new AnimalSpecie(200, 220, Gender::Female) );
+    species_array.push_back(new VegetableSpecie());
+    species_array.push_back(new VegetableSpecie(333, 450, Gender::Female) );
+}
+
+void GameState::test_breed()
+{
+
+}
