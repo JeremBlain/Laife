@@ -14,7 +14,10 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
+
+    //Breeding behavior
     AnimalSpecie* breed(Specie &female);
+    void find_partner(AnimalSpecie *animals_array);
 
 private :
 

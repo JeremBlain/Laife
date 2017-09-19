@@ -55,3 +55,8 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
 
     return nullptr;
 }
+
+void AnimalSpecie::find_partner(AnimalSpecie *animals_array)
+{
+
+}

@@ -45,6 +45,5 @@ void MainWindow::time_ring()
     gameState.change_behavior();
     gameState.move();
 
-    gameState.test_breed();
     update();
 }
