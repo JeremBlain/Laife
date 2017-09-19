@@ -11,7 +11,8 @@ class GameState
 public:
     GameState();
 
-    std::vector<Specie*> species_array;
+    std::vector<AnimalSpecie*> animals_array;
+    std::vector<VegetableSpecie*> vegans_array;
 
     void move();
     void change_behavior();

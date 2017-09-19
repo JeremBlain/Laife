@@ -29,7 +29,12 @@ void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
 
-    for(auto &specie : gameState.species_array)
+    for(auto &specie : gameState.animals_array)
+    {
+        specie->draw_sprite(&painter);
+    }
+
+    for(auto &specie : gameState.vegans_array)
     {
         specie->draw_sprite(&painter);
     }
@@ -39,5 +44,7 @@ void MainWindow::time_ring()
 {
     gameState.change_behavior();
     gameState.move();
+
+    gameState.test_breed();
     update();
 }

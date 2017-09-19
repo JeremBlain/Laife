@@ -6,7 +6,7 @@ GameState::GameState()
 
 void GameState::move()
 {
-    for(auto &specie : species_array)
+    for(auto &specie : animals_array)
     {
         specie->move(3, COS);
     }
@@ -14,7 +14,11 @@ void GameState::move()
 
 void GameState::change_behavior()
 {
-    for(auto &specie : species_array)
+    for(auto &specie : animals_array)
+    {
+        specie->change_behavior();
+    }
+    for(auto &specie : vegans_array)
     {
         specie->change_behavior();
     }
@@ -41,13 +45,23 @@ void GameState::display_cos_sin()
 
 void GameState::create_test_game()
 {
-    species_array.push_back(new AnimalSpecie());
-    species_array.push_back(new AnimalSpecie(200, 220, Gender::Female) );
-    species_array.push_back(new VegetableSpecie());
-    species_array.push_back(new VegetableSpecie(333, 450, Gender::Female) );
+    animals_array.push_back(new AnimalSpecie());
+    animals_array.push_back(new AnimalSpecie(200, 220, Gender::Female) );
+    vegans_array.push_back(new VegetableSpecie());
+    vegans_array.push_back(new VegetableSpecie(333, 450, Gender::Female) );
 }
 
 void GameState::test_breed()
 {
+    std::cout<<"before breeding"<<std::endl;
+    AnimalSpecie *new_born = animals_array[1]->breed(*animals_array[0]);
+    std::cout<<"after breeding"<<std::endl;
+
+    if(new_born == nullptr)
+        std::cout<<"can't pushing, new_born is nullptr"<<std::endl;
+    else
+        animals_array.push_back(new_born);
+
+    std::cout<<"after pushing"<<std::endl;
 
 }

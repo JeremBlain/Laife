@@ -42,8 +42,10 @@ void AnimalSpecie::change_behavior()
         action_state = Action::Rest;
 }
 
-Specie* AnimalSpecie::breed(Specie &male)
+AnimalSpecie* AnimalSpecie::breed(Specie &male)
 {
+
+    std::cout<<"animal is gender "<<gender<<" and the other is gender "<<male.get_gender()<<std::endl;
     //this is the female which gives the birth and we need the other specie to be a male
     if(gender == Gender::Female && male.get_gender() == Gender::Male)
     {

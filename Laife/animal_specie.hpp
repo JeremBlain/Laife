@@ -14,7 +14,7 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
-    Specie* breed(Specie &male);
+    AnimalSpecie* breed(Specie &female);
 
 private :
 

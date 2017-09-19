@@ -13,7 +13,7 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
-    Specie* breed(Specie &male);
+    VegetableSpecie* breed(Specie &male);
 };
 
 #endif // VEGETAL_SPECIE_HPP

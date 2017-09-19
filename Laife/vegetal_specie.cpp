@@ -29,7 +29,7 @@ void VegetableSpecie::change_behavior()
     //do nothing for the moment
 }
 
-Specie* VegetableSpecie::breed(Specie &male)
+VegetableSpecie* VegetableSpecie::breed(Specie &male)
 {
     //this is the female which gives the birth and we need the other specie to be a male
     if(gender == Gender::Female && male.get_gender() == Gender::Male)
