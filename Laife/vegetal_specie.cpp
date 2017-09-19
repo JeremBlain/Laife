@@ -10,6 +10,11 @@ VegetableSpecie::VegetableSpecie(int pos_x, int pos_y, Gender g) : Specie(pos_x,
 
 }
 
+VegetableSpecie::~VegetableSpecie()
+{
+    delete this;
+}
+
 
 void VegetableSpecie::draw_sprite(QPainter *painter)
 {

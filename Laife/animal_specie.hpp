@@ -10,6 +10,8 @@ public:
     AnimalSpecie();
     AnimalSpecie(int pos_x, int pos_y, Gender g);
 
+    ~AnimalSpecie();
+
     void draw_sprite(QPainter *painter);
     void change_behavior();
     Specie* breed(Specie &male);

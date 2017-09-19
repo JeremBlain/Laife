@@ -11,6 +11,8 @@ public:
     Specie();
     Specie(int pos_x, int pos_y, int h, Gender g);
 
+    virtual ~Specie() = 0;
+
     virtual void draw_sprite(QPainter *painter) = 0;
     virtual void change_behavior() = 0;
     virtual Specie* breed(Specie &male) = 0;

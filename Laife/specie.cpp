@@ -16,6 +16,10 @@ Specie::Specie(int pos_x, int pos_y, int h, Gender g) : x(pos_x), y(pos_y), acti
     direction_angle = rand()*2*Constant::PI;
 }
 
+Specie::~Specie()
+{
+}
+
 void Specie::move(int dv, float COS[])
 {
     if(action_state == Action::Move)
