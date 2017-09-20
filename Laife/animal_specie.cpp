@@ -68,7 +68,8 @@ void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> animals_array)
 
         if(dist < 200)
         {
-
+            pos_x_reach = partner_x;
+            pos_y_reach = partner_y;
         }
     }
 }
