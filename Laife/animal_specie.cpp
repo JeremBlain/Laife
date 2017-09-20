@@ -64,9 +64,9 @@ void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> animals_array)
         int partner_x = animal->get_x();
         int partner_y = animal->get_y();
 
-        int dist = distance(partner_x, x, partner_y, y);
+        int dist = distance(partner_x, partner_y, x, y);
 
-        if(dist < height)
+        if(dist < 200)
         {
 
         }

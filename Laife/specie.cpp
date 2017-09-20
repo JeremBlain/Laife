@@ -26,7 +26,7 @@ void Specie::move(int speed, float COS[])
 {
         //int i = direction_angle*32/(Constant::PI);
 
-        float dist = distance(pos_x_reach, x, pos_y_reach, y);
+        float dist = distance(pos_x_reach, pos_y_reach, x, y);
         float dx = (pos_x_reach - x)/dist;
         float dy = (pos_y_reach - y)/dist;
 

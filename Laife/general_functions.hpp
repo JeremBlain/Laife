@@ -7,6 +7,6 @@
 /*this comptue the L1 distance, be careful.
  * The reason is : this is computationaly more efficient. And don't need math library !
  */
-float distance(int x1, int x2, int y1, int y2);
+float distance(int x1, int y1, int x2, int y2);
 
 #endif // GENERAL_FUNCTIONS_HPP

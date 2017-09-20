@@ -1,5 +1,5 @@
 
-float distance(int x1, int x2, int y1, int y2)
+float distance(int x1, int y1, int x2, int y2)
 {
     int dist_x = x2 - x1;
     dist_x > 0 ? dist_x = dist_x : dist_x = - dist_x;
