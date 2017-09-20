@@ -57,7 +57,7 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
     return nullptr;
 }
 
-void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> animals_array)
+void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> &animals_array)
 {
     for(auto &animal : animals_array)
     {
@@ -66,7 +66,7 @@ void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> animals_array)
 
         int dist = distance(partner_x, partner_y, x, y);
 
-        if(dist < 200)
+        if(dist < 250)
         {
             pos_x_reach = partner_x;
             pos_y_reach = partner_y;

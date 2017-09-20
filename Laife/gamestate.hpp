@@ -15,6 +15,7 @@ public:
     std::vector<VegetableSpecie*> vegans_array;
 
     void move();
+    void find_partner();
     void change_behavior();
     void fill_up_cos_sin_array();
 

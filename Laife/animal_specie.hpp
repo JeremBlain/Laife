@@ -17,7 +17,7 @@ public:
 
     //Breeding behavior
     AnimalSpecie* breed(Specie &female);
-    void find_partner(std::vector<AnimalSpecie*> animals_array);
+    void find_partner(std::vector<AnimalSpecie *> &animals_array);
 
 private :
 
