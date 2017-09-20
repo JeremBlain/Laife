@@ -30,12 +30,13 @@ void AnimalSpecie::draw_sprite(QPainter *painter)
 
 void AnimalSpecie::change_behavior()
 {
-    int probability = rand() % 10; //range from 0 to 99
+    int probability = rand() % 10; //range from 0 to 9
 
     if(action_state == Action::Rest && probability < 5 && probability > 1)
     {
         action_state = Action::Move;
-        direction_angle = rand()*2*Constant::PI;
+        pos_x_reach = x + rand()%100-50;
+        pos_y_reach = y + rand()%100-50;
     }
 
     if(action_state == Action::Move && probability == 1)
@@ -56,7 +57,18 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
     return nullptr;
 }
 
-void AnimalSpecie::find_partner(AnimalSpecie *animals_array)
+void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> animals_array)
 {
+    for(auto &animal : animals_array)
+    {
+        int partner_x = animal->get_x();
+        int partner_y = animal->get_y();
 
+        int dist = distance(partner_x, x, partner_y, y);
+
+        if(dist < height)
+        {
+
+        }
+    }
 }

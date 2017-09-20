@@ -3,6 +3,7 @@
 
 #include <QPainter>
 #include "enumerations.hpp"
+#include "general_functions.hpp"
 #include "iostream"
 
 class Specie
@@ -17,7 +18,7 @@ public:
     virtual void change_behavior() = 0;
     virtual Specie* breed(Specie &male) = 0;
 
-    void move(int dv, float COS[]);
+    void move(int speed, float COS[]);
 
     // GETTER & SETTER
     Gender get_gender();
@@ -28,7 +29,8 @@ public:
 protected :
     int x, y; //coords
     Action action_state; //Behavior of the specie
-    float direction_angle; //direction to move in radian
+    int pos_x_reach; //coordinates the specie want to reach
+    int pos_y_reach;
 
 
     // Caracteristics :
@@ -36,7 +38,6 @@ protected :
     int height;
     Gender gender;
     int age;
-
 };
 
 #endif // SPECIE_HPP

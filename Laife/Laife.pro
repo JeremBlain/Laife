@@ -28,13 +28,15 @@ SOURCES += main.cpp\
     specie.cpp \
     animal_specie.cpp \
     vegetal_specie.cpp \
-    gamestate.cpp
+    gamestate.cpp \
+    general_functions.cpp
 
 HEADERS  += mainwindow.hpp \
     specie.hpp \
     animal_specie.hpp \
     vegetal_specie.hpp \
     gamestate.hpp \
-    enumerations.hpp
+    enumerations.hpp \
+    general_functions.hpp
 
 FORMS    += mainwindow.ui
