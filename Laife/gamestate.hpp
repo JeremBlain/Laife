@@ -16,6 +16,7 @@ public:
 
     void move();
     void find_partner();
+    void breed();
     void change_behavior();
     void fill_up_cos_sin_array();
 

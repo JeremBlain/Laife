@@ -22,6 +22,32 @@ void GameState::find_partner()
     }
 }
 
+void GameState::breed()
+{
+    for(unsigned int i = 0; i < animals_array.size(); ++i)
+    {
+        for(unsigned int j = i+1; j < animals_array.size(); ++j)
+        {
+            if( distance(animals_array[i]->get_x(), animals_array[i]->get_y(), animals_array[j]->get_x(), animals_array[j]->get_y()) < 30)
+            {
+                //if ith animal is the female and jth is male
+                if( animals_array[i]->get_gender() == Gender::Female && animals_array[j]->get_gender() == Gender::Male)
+                {
+                    AnimalSpecie *new_born = animals_array[i]->breed(*animals_array[j]);
+                    animals_array.push_back(new_born);
+                }
+
+                //if ith animal is the male and jth is female
+                if( animals_array[i]->get_gender() == Gender::Male && animals_array[j]->get_gender() == Gender::Female)
+                {
+                    AnimalSpecie *new_born = animals_array[j]->breed(*animals_array[i]);
+                    animals_array.push_back(new_born);
+                }
+            }
+        }
+    }
+}
+
 void GameState::change_behavior()
 {
     for(auto &specie : animals_array)
@@ -56,7 +82,7 @@ void GameState::display_cos_sin()
 void GameState::create_test_game()
 {
     animals_array.push_back(new AnimalSpecie());
-    animals_array.push_back(new AnimalSpecie(200, 220, Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(200, 100, Gender::Female) );
     vegans_array.push_back(new VegetableSpecie());
     vegans_array.push_back(new VegetableSpecie(333, 450, Gender::Female) );
 }

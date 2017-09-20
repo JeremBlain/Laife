@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
-    timer->start(400);
+    timer->start(100);
 
     update();
 }
@@ -45,6 +45,7 @@ void MainWindow::time_ring()
     gameState.change_behavior();
     gameState.find_partner();
     gameState.move();
+    gameState.breed();
 
     update();
 }
