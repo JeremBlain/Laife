@@ -26,12 +26,19 @@ void Specie::move(int speed, float COS[])
 {
         //int i = direction_angle*32/(Constant::PI);
 
-        float dist = distance(pos_x_reach, pos_y_reach, x, y);
-        float dx = (pos_x_reach - x)/dist;
-        float dy = (pos_y_reach - y)/dist;
+        float dist = distance(pos_x_reach, pos_y_reach, x, y); //float for keeping the float operations after with dx and dy !
 
-        this->x += speed*dx;
-        this->y += speed*dy;
+        //if dist = 0 we don't need to move, location is reached and we can rest ! otherwise we move
+        if(dist != 0)
+        {
+            float dx = (pos_x_reach - x)/dist;
+            float dy = (pos_y_reach - y)/dist;
+
+            this->x += speed*dx;
+            this->y += speed*dy;
+        }
+        else
+            action_state = Action::Rest;
 }
 
 Gender Specie::get_gender()
