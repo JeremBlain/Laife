@@ -37,7 +37,7 @@ void Specie::move(int speed, float COS[])
             this->x += speed*dx;
             this->y += speed*dy;
         }
-        else
+        if(dist < height)
             action_state = Action::Rest;
 }
 

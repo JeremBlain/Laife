@@ -43,6 +43,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 void MainWindow::time_ring()
 {
     gameState.change_behavior();
+    gameState.find_partner();
     gameState.move();
 
     update();

@@ -59,8 +59,6 @@ void GameState::create_test_game()
     animals_array.push_back(new AnimalSpecie(200, 220, Gender::Female) );
     vegans_array.push_back(new VegetableSpecie());
     vegans_array.push_back(new VegetableSpecie(333, 450, Gender::Female) );
-
-    animals_array[0]->find_partner(animals_array);
 }
 
 void GameState::test_breed()

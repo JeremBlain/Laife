@@ -30,23 +30,24 @@ void AnimalSpecie::draw_sprite(QPainter *painter)
 
 void AnimalSpecie::change_behavior()
 {
-    int probability = rand() % 10; //range from 0 to 9
-
-    if(action_state == Action::Rest && probability < 5 && probability > 1)
+    if(action_state == Action::Rest)
     {
-        action_state = Action::Move;
-        pos_x_reach = x + rand()%100-50;
-        pos_y_reach = y + rand()%100-50;
-    }
+        int probability = rand() % 10; //range from 0 to 9
 
-    if(action_state == Action::Move && probability == 1)
-        action_state = Action::Rest;
+        if(probability >= 0 && probability < 3)
+        {
+            action_state = Action::Move;
+            pos_x_reach = x + rand()%100-50;
+            pos_y_reach = y + rand()%100-50;
+        }
+
+        if(probability >= 3 && probability < 6)
+            action_state = Action::Find_Partner;
+    }
 }
 
 AnimalSpecie* AnimalSpecie::breed(Specie &male)
 {
-
-    std::cout<<"animal is gender "<<gender<<" and the other is gender "<<male.get_gender()<<std::endl;
     //this is the female which gives the birth and we need the other specie to be a male
     if(gender == Gender::Female && male.get_gender() == Gender::Male)
     {
@@ -70,6 +71,8 @@ void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> &animals_array)
         {
             pos_x_reach = partner_x;
             pos_y_reach = partner_y;
+
+            action_state = Action::Move;
         }
     }
 }
