@@ -22,7 +22,7 @@ namespace Constant
 
 /* this enum is for animal specie.
  * vegetal species only use rest and breed) */
-enum Action : int { Rest, Move, Sleep, Find_Food, Find_Water, Find_Specie, Drink, Eat, Breed, Play };
+enum Action : int { Rest, Move, Sleep, Find_Food, Find_Water, Find_Partner, Drink, Eat, Breed, Play };
 
 enum Gender : int { Male, Female };
 
