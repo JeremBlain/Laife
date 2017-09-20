@@ -38,6 +38,7 @@ protected :
     int height;
     Gender gender;
     int age;
+    int breedable;
 };
 
 #endif // SPECIE_HPP

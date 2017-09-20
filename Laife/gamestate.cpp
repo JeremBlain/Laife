@@ -34,14 +34,16 @@ void GameState::breed()
                 if( animals_array[i]->get_gender() == Gender::Female && animals_array[j]->get_gender() == Gender::Male)
                 {
                     AnimalSpecie *new_born = animals_array[i]->breed(*animals_array[j]);
-                    animals_array.push_back(new_born);
+                    if(new_born != nullptr)
+                        animals_array.push_back(new_born);
                 }
 
                 //if ith animal is the male and jth is female
                 if( animals_array[i]->get_gender() == Gender::Male && animals_array[j]->get_gender() == Gender::Female)
                 {
                     AnimalSpecie *new_born = animals_array[j]->breed(*animals_array[i]);
-                    animals_array.push_back(new_born);
+                    if(new_born != nullptr)
+                        animals_array.push_back(new_born);
                 }
             }
         }

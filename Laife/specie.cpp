@@ -5,13 +5,13 @@
  * */
 
 Specie::Specie() : x(100), y(100), action_state(Action::Rest), pos_x_reach(x), pos_y_reach(y),
-                   weight(10), height(24), gender(Gender::Male), age(0)
+                   weight(10), height(24), gender(Gender::Male), age(0), breedable(0)
 {
 
 }
 
 Specie::Specie(int pos_x, int pos_y, int h, Gender g) : x(pos_x), y(pos_y), action_state(Action::Rest),
-                                       weight(10), height(h), gender(g), age(0)
+                                       weight(10), height(h), gender(g), age(0), breedable(0)
 {
     //default : the specie will reach a point near it
     pos_x_reach = x + rand()%100-50;

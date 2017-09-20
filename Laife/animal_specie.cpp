@@ -51,8 +51,12 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
     //this is the female which gives the birth and we need the other specie to be a male
     if(gender == Gender::Female && male.get_gender() == Gender::Male)
     {
-        AnimalSpecie* new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
-        return new_born;
+        if(breedable == 0)
+        {
+            AnimalSpecie* new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
+            breedable = 100;
+            return new_born;
+        }
     }
 
     return nullptr;
