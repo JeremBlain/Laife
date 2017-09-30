@@ -41,6 +41,12 @@ void Specie::move(int speed, float COS[])
             action_state = Action::Rest;
 }
 
+void Specie::decrement_breedable()
+{
+    if(breedable > 0) //breedable's minimum is 0 !
+        --breedable;
+}
+
 Gender Specie::get_gender()
 {
     return gender;

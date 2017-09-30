@@ -19,6 +19,7 @@ public:
     void breed();
     void change_behavior();
     void fill_up_cos_sin_array();
+    void grow_old(); //function to grow old species, like his age, his breedable state, etc...
 
     //this function has only a test purpose, to see if the value of cos and sin are coherent
     void display_cos_sin();

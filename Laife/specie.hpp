@@ -19,6 +19,7 @@ public:
     virtual Specie* breed(Specie &male) = 0;
 
     void move(int speed, float COS[]);
+    void decrement_breedable();
 
     // GETTER & SETTER
     Gender get_gender();

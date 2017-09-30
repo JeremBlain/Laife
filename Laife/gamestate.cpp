@@ -70,6 +70,18 @@ void GameState::fill_up_cos_sin_array()
     }
 }
 
+void GameState::grow_old()
+{
+    for(auto &specie : animals_array)
+    {
+        specie->decrement_breedable();
+    }
+    for(auto &specie : vegans_array)
+    {
+        specie->decrement_breedable();
+    }
+}
+
 
 //TEST value of COS and SIN
 void GameState::display_cos_sin()
