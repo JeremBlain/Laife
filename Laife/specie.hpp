@@ -18,7 +18,7 @@ public:
     virtual void change_behavior() = 0;
     virtual Specie* breed(Specie &male) = 0;
 
-    void move(int speed, float COS[]);
+    void move(int speed);
     void decrement_breedable();
 
     // GETTER & SETTER

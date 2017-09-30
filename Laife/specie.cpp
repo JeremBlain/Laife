@@ -22,7 +22,7 @@ Specie::~Specie()
 {
 }
 
-void Specie::move(int speed, float COS[])
+void Specie::move(int speed)
 {
         //int i = direction_angle*32/(Constant::PI);
 

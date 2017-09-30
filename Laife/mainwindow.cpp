@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
     srand(time(NULL));
 
     gameState.create_test_game();
-    gameState.fill_up_cos_sin_array();
 
     timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
