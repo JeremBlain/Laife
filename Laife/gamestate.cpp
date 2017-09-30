@@ -96,9 +96,9 @@ void GameState::display_cos_sin()
 void GameState::create_test_game()
 {
     animals_array.push_back(new AnimalSpecie());
-    animals_array.push_back(new AnimalSpecie(200, 100, Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(Test::first_animal_specie_x, Test::first_animal_specie_y, Gender::Female) );
     vegans_array.push_back(new VegetableSpecie());
-    vegans_array.push_back(new VegetableSpecie(333, 450, Gender::Female) );
+    vegans_array.push_back(new VegetableSpecie(Test::first_vegetable_specie_x, Test::first_vegetable_specie_y, Gender::Female) );
 }
 
 void GameState::test_breed()

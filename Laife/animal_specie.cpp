@@ -54,7 +54,7 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
         if(breedable == 0)
         {
             AnimalSpecie* new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
-            breedable = 100;
+            breedable = Constant::BREEDED;
             return new_born;
         }
     }
@@ -71,7 +71,7 @@ void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> &animals_array)
 
         int dist = distance(partner_x, partner_y, x, y);
 
-        if(dist < 250)
+        if(dist < Constant::DISTANCE_MIN_FIND_PARTNER)
         {
             pos_x_reach = partner_x;
             pos_y_reach = partner_y;
