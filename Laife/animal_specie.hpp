@@ -17,6 +17,7 @@ public:
 
     //Breeding behavior
     AnimalSpecie* breed(Specie &female);
+    void copulate();
     void find_partner(std::vector<AnimalSpecie *> &animals_array);
 
 private :

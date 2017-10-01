@@ -17,12 +17,15 @@ public:
     virtual void draw_sprite(QPainter *painter) = 0;
     virtual void change_behavior() = 0;
     virtual Specie* breed(Specie &male) = 0;
+    virtual void copulate() = 0; //Spcie is now in breed state. This the step before the species mahe the new born
 
     void move(int speed);
     void decrement_breedable();
+    void rest();
 
     // GETTER & SETTER
     Gender get_gender();
+    int get_breedable();
     Action get_action_state();
     int get_x();
     int get_y();
@@ -39,7 +42,7 @@ protected :
     int height;
     Gender gender;
     int age;
-    int breedable;
+    int breedable; //the specie can reproduce if breedable is 0, cannot otherwise (breedable >=0)
 };
 
 #endif // SPECIE_HPP

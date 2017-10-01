@@ -16,8 +16,12 @@ namespace Constant
 {
     const int NUMBER_ACTIONS = 10; //don't forget to update it when you add or remove an action... !
     const float PI = 3.1415;
+
     const int BREEDED = 100;
+    const int COPULATE = 50;
     const int DISTANCE_MIN_FIND_PARTNER = 250;
+    const int DISTANCE_MAX_BREED = 30;
+
     const int TICK = 100; //millisecond
 }
 
@@ -33,7 +37,7 @@ namespace Test
 
 /* this enum is for animal specie.
  * vegetal species only use rest and breed) */
-enum Action : int { Rest, Move, Sleep, Find_Food, Find_Water, Find_Partner, Drink, Eat, Breed, Play };
+enum Action : int { Rest, Sleep, Move, Find_Food, Find_Water, Find_Partner, Drink, Eat, Breed, Play };
 
 enum Gender : int { Male, Female };
 

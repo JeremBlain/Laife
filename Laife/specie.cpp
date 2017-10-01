@@ -47,9 +47,19 @@ void Specie::decrement_breedable()
         --breedable;
 }
 
+void Specie::rest()
+{
+    action_state = Action::Rest;
+}
+
 Gender Specie::get_gender()
 {
     return gender;
+}
+
+int Specie::get_breedable()
+{
+    return breedable;
 }
 
 Action Specie::get_action_state()

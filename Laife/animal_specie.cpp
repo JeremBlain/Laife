@@ -34,14 +34,14 @@ void AnimalSpecie::change_behavior()
     {
         int probability = rand() % 10; //range from 0 to 9
 
-        if(probability >= 0 && probability < 3)
+        if(probability >= 0 && probability < 4)
         {
             action_state = Action::Move;
             pos_x_reach = x + rand()%100-50;
             pos_y_reach = y + rand()%100-50;
         }
 
-        if(probability >= 3 && probability < 6)
+        if(probability >= 4 && probability < 6 && breedable == 0) //if the animal can't reproduce, doesn't need to find a partner
             action_state = Action::Find_Partner;
     }
 }
@@ -55,11 +55,22 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
         {
             AnimalSpecie* new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
             breedable = Constant::BREEDED;
+            action_state = Action::Rest;
+            male.rest();
             return new_born;
         }
     }
 
     return nullptr;
+}
+
+void AnimalSpecie::copulate()
+{
+    if(action_state != Action::Breed && breedable == 0)
+    {
+        action_state = Action::Breed;
+        breedable = Constant::COPULATE; //just to don't make the breed instant
+    }
 }
 
 void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> &animals_array)

@@ -13,7 +13,10 @@ public:
 
     void draw_sprite(QPainter *painter);
     void change_behavior();
+
+    //breeding related methods
     VegetableSpecie* breed(Specie &male);
+    void copulate();
 };
 
 #endif // VEGETAL_SPECIE_HPP

@@ -40,3 +40,13 @@ VegetableSpecie* VegetableSpecie::breed(Specie &male)
 
     return nullptr;
 }
+
+
+void VegetableSpecie::copulate()
+{
+    if(action_state != Action::Breed)
+    {
+        action_state = Action::Breed;
+        breedable = Constant::COPULATE; //just to don't make the breed instant
+    }
+}
