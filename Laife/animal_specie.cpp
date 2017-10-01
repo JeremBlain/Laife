@@ -23,6 +23,9 @@ AnimalSpecie::~AnimalSpecie()
 void AnimalSpecie::draw_sprite(QPainter *painter)
 {
     QBrush brush(Qt::red);
+    if(gender == Gender::Female) //if female, change the color to magenta
+        brush.setColor(Qt::magenta);
+
     painter->setBrush(brush);
 
     painter->drawEllipse(x-height/2,y-height/2, height,height);

@@ -18,7 +18,10 @@ VegetableSpecie::~VegetableSpecie()
 
 void VegetableSpecie::draw_sprite(QPainter *painter)
 {
-    QBrush brush(Qt::green);
+    QBrush brush(Qt::darkGreen);
+    if(gender == Gender::Female) //if female, change the color to green
+        brush.setColor(Qt::green);
+
     painter->setBrush(brush);
 
     painter->drawEllipse(x-height/2,y-height/2, height,height);
