@@ -2,6 +2,9 @@
 #define POLLEN_H
 
 
+#include <QPainter>
+#include "enumerations.hpp"
+
 class Pollen
 {
 public:
@@ -9,7 +12,7 @@ public:
     Pollen(int init_x, int init_y, int direction_x, int direction_y);
     ~Pollen();
 
-    void draw_sprite();
+    void draw_sprite(QPainter *painter);
     void move();
 
 
