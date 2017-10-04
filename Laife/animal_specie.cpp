@@ -56,7 +56,13 @@ AnimalSpecie* AnimalSpecie::breed(Specie &male)
     {
         if(breedable == 0)
         {
-            AnimalSpecie* new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
+            AnimalSpecie* new_born;
+            int proba_M_F = rand()%2;
+            if(proba_M_F == 0)
+                new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
+            else
+                new_born = new AnimalSpecie(x+25, y+25, Gender::Female);
+
             breedable = Constant::BREEDED;
             action_state = Action::Rest;
             male.rest();
