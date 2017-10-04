@@ -27,10 +27,12 @@ void VegetableSpecie::draw_sprite(QPainter *painter)
     painter->drawEllipse(x-height/2,y-height/2, height,height);
 }
 
+
 void VegetableSpecie::change_behavior()
 {
     //do nothing for the moment
 }
+
 
 VegetableSpecie* VegetableSpecie::breed(Specie &male)
 {

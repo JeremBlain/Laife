@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     animal_specie.cpp \
     vegetal_specie.cpp \
     gamestate.cpp \
-    general_functions.cpp
+    general_functions.cpp \
+    pollen.cpp
 
 HEADERS  += mainwindow.hpp \
     specie.hpp \
@@ -37,6 +38,7 @@ HEADERS  += mainwindow.hpp \
     vegetal_specie.hpp \
     gamestate.hpp \
     enumerations.hpp \
-    general_functions.hpp
+    general_functions.hpp \
+    pollen.h
 
 FORMS    += mainwindow.ui
