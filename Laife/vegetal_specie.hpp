@@ -11,7 +11,7 @@ public:
 
     ~VegetableSpecie();
 
-    void draw_sprite(QPainter *painter);
+    void draw_sprite(QPainter *painter); //the color depends on the gender
     void change_behavior();
 
     //breeding related methods

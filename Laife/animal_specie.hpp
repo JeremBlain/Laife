@@ -12,12 +12,14 @@ public:
 
     ~AnimalSpecie();
 
-    void draw_sprite(QPainter *painter);
-    void change_behavior();
+    void draw_sprite(QPainter *painter); //the color depends on the gender
+    void change_behavior(); //if the animal rest, it has the probabilty to change is behavior
 
     //Breeding behavior
-    AnimalSpecie* breed(Specie &female);
+    AnimalSpecie* breed(Specie &male); //we check if the other species is a male
     void copulate();
+    //Check the animals species array and take the first species that is close enough
+    //then we set the position to reach
     void find_partner(std::vector<AnimalSpecie *> &animals_array);
 
 private :

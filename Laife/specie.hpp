@@ -14,7 +14,7 @@ public:
 
     virtual ~Specie() = 0;
 
-    virtual void draw_sprite(QPainter *painter) = 0;
+    virtual void draw_sprite(QPainter *painter) = 0; //the color depends on the gender
     virtual void change_behavior() = 0;
     virtual Specie* breed(Specie &male) = 0;
     virtual void copulate() = 0; //Spcie is now in breed state. This the step before the species mahe the new born

@@ -78,7 +78,7 @@ void AnimalSpecie::copulate()
     if(action_state != Action::Breed && breedable == 0)
     {
         action_state = Action::Breed;
-        breedable = Constant::COPULATE; //just to don't make the breed instant
+        breedable = Constant::COPULATE; //just for don't making the breed instant
     }
 }
 

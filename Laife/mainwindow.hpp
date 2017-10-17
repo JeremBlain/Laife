@@ -23,7 +23,7 @@ public:
     void paintEvent(QPaintEvent *event);
 
 public slots:
-    void time_ring();
+    void time_ring(); //each time the timer rings : update the species state
 
 private:
     Ui::MainWindow *ui;
