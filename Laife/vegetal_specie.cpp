@@ -30,7 +30,7 @@ void VegetableSpecie::draw_sprite(QPainter *painter)
 
 void VegetableSpecie::change_behavior()
 {
-    //do nothing for the moment
+    action_state = Action::Breed;
 }
 
 
@@ -44,6 +44,13 @@ VegetableSpecie* VegetableSpecie::breed(Specie &male)
     }
 
     return nullptr;
+}
+
+Pollen* VegetableSpecie::send_pollen()
+{
+    Pollen* pollen = new Pollen(x+15, y+15, 1, 0);
+
+    return pollen;
 }
 
 

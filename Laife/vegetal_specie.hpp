@@ -2,6 +2,7 @@
 #define VEGETAL_SPECIE_HPP
 
 #include "specie.hpp"
+#include "pollen.h"
 
 class VegetableSpecie : public Specie
 {
@@ -16,6 +17,7 @@ public:
 
     //breeding related methods
     VegetableSpecie* breed(Specie &male);
+    Pollen *send_pollen();
     void copulate();
 };
 

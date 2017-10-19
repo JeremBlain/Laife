@@ -52,6 +52,11 @@ void GameState::breed()
             }
         }
     }
+
+    for(auto &specie : vegans_array)
+    {
+        Pollen* pollen = specie->send_pollen();
+    }
 }
 
 void GameState::change_behavior()
