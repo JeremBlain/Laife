@@ -61,7 +61,8 @@ void GameState::breed()
 
     for(auto &specie : vegans_array)
     {
-        pollens_array.push_back(specie->send_pollen());
+        if(specie->get_gender() == Gender::Male && specie->get_breedable() == 0)
+            pollens_array.push_back(specie->send_pollen());
     }
 }
 

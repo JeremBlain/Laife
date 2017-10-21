@@ -48,6 +48,7 @@ VegetableSpecie* VegetableSpecie::breed(Specie &male)
 
 Pollen* VegetableSpecie::send_pollen()
 {
+    breedable = Constant::BREEDED;
     return new Pollen(x+15, y+15, 1, 0);
 }
 
