@@ -13,6 +13,7 @@ public:
 
     std::vector<AnimalSpecie*> animals_array;
     std::vector<VegetableSpecie*> vegans_array;
+    std::vector<Pollen*> pollens_array;
 
     //all these methods check if the species have the correct behavior (ex : move() check if the behavior of species is Move)
     void move(); //move all the animals species

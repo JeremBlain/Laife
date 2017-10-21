@@ -11,6 +11,12 @@ void GameState::move()
         if(specie->get_action_state() == Action::Move)
             specie->move(3);
     }
+
+    if(!pollens_array.empty())
+        for(auto &pollen : pollens_array)
+        {
+            pollen->move();
+        }
 }
 
 void GameState::find_partner()
@@ -55,7 +61,7 @@ void GameState::breed()
 
     for(auto &specie : vegans_array)
     {
-        Pollen* pollen = specie->send_pollen();
+        pollens_array.push_back(specie->send_pollen());
     }
 }
 

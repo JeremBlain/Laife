@@ -48,9 +48,7 @@ VegetableSpecie* VegetableSpecie::breed(Specie &male)
 
 Pollen* VegetableSpecie::send_pollen()
 {
-    Pollen* pollen = new Pollen(x+15, y+15, 1, 0);
-
-    return pollen;
+    return new Pollen(x+15, y+15, 1, 0);
 }
 
 

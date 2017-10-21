@@ -22,7 +22,7 @@ namespace Constant
     const int DISTANCE_MIN_FIND_PARTNER = 250;
     const int DISTANCE_MAX_BREED = 30;
 
-    const int POLLEN_SIZE = 5;
+    const int POLLEN_SIZE = 10;
 
     const int TICK = 100; //millisecond
 }

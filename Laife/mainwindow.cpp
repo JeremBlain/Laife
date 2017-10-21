@@ -38,6 +38,12 @@ void MainWindow::paintEvent(QPaintEvent *event)
     {
         specie->draw_sprite(&painter);
     }
+
+    if(!gameState.pollens_array.empty())
+        for(auto &pollen : gameState.pollens_array)
+        {
+            pollen->draw_sprite(&painter);
+        }
 }
 
 void MainWindow::time_ring()
