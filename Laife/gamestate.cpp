@@ -41,9 +41,13 @@ void GameState::breed()
                 &&  animals_array[j]->get_gender() == Gender::Male   && animals_array[j]->get_breedable() == 0)
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
-                    AnimalSpecie *new_born = animals_array[i]->breed(*animals_array[j]);
+                    AnimalSpecie *new_born = animals_array[i]->breed();
                     if(new_born != nullptr)
+                    {
                         animals_array.push_back(new_born);
+                        animals_array[j]->change_behavior(); // the male have to chnage is state from breed to rest, the state of female is changed in the breed function
+                    }
+
                 }
 
                 //if ith animal is the male and jth is female
@@ -51,9 +55,12 @@ void GameState::breed()
                 &&  animals_array[j]->get_gender() == Gender::Female && animals_array[j]->get_breedable() == 0)
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
-                    AnimalSpecie *new_born = animals_array[j]->breed(*animals_array[i]);
+                    AnimalSpecie *new_born = animals_array[j]->breed();
                     if(new_born != nullptr)
+                    {
                         animals_array.push_back(new_born);
+                        animals_array[i]->change_behavior(); // the male have to chnage is state from breed to rest, the state of female is changed in the breed function
+                    }
                 }
             }
         }
@@ -72,6 +79,7 @@ void GameState::change_behavior()
     {
         specie->change_behavior();
     }
+
     for(auto &specie : vegans_array)
     {
         specie->change_behavior();
@@ -103,7 +111,7 @@ void GameState::create_test_game()
 void GameState::test_breed()
 {
     std::cout<<"before breeding"<<std::endl;
-    AnimalSpecie *new_born = animals_array[1]->breed(*animals_array[0]);
+    AnimalSpecie *new_born = animals_array[1]->breed();
     std::cout<<"after breeding"<<std::endl;
 
     if(new_born == nullptr)

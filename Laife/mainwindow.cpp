@@ -48,11 +48,11 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 void MainWindow::time_ring()
 {
-    gameState.change_behavior();
+    gameState.grow_old();
     gameState.find_partner();
     gameState.move();
     gameState.breed();
-    gameState.grow_old();
+    gameState.change_behavior();
 
     update();
 }

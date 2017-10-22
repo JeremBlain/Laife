@@ -33,6 +33,12 @@ void AnimalSpecie::draw_sprite(QPainter *painter)
 
 void AnimalSpecie::change_behavior()
 {
+    // if action state is in Breed state and breedable is 0, then the breeding is finish and the action can be set to rest
+    if(action_state == Action::Breed && breedable == 0)
+    {
+        action_state = Action::Rest;
+    }
+
     if(action_state == Action::Rest)
     {
         int probability = rand() % 10; //range from 0 to 9
@@ -49,25 +55,21 @@ void AnimalSpecie::change_behavior()
     }
 }
 
-AnimalSpecie* AnimalSpecie::breed(Specie &male)
+AnimalSpecie* AnimalSpecie::breed()
 {
     //this is the female which gives the birth and we need the other specie to be a male
-    if(gender == Gender::Female && male.get_gender() == Gender::Male)
+    if(breedable == 0)
     {
-        if(breedable == 0)
-        {
-            AnimalSpecie* new_born;
-            int proba_M_F = rand()%2;
-            if(proba_M_F == 0)
-                new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
-            else
-                new_born = new AnimalSpecie(x+25, y+25, Gender::Female);
+        AnimalSpecie* new_born;
+        int proba_M_F = rand()%2;
+        if(proba_M_F == 0)
+            new_born = new AnimalSpecie(x+25, y+25, Gender::Male);
+        else
+            new_born = new AnimalSpecie(x+25, y+25, Gender::Female);
 
-            breedable = Constant::BREEDED;
-            action_state = Action::Rest;
-            male.rest();
-            return new_born;
-        }
+        breedable = Constant::BREEDED;
+        action_state = Action::Rest;
+        return new_born;
     }
 
     return nullptr;
