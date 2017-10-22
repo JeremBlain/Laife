@@ -102,6 +102,33 @@ void GameState::grow_old()
 
 void GameState::create_test_game()
 {
+
+    //empty the vector first
+    std::cout<<"Init the test game"<<std::endl;
+    for(auto &species : animals_array)
+    {
+        delete species;
+    }
+    animals_array.clear();
+    if(animals_array.empty() == true)
+        std::cout<<"deleted animals"<<std::endl;
+
+    for(auto &species : vegans_array)
+    {
+        delete species;
+    }
+    vegans_array.clear();
+    if(animals_array.empty() == true)
+        std::cout<<"deleted animals"<<std::endl;
+
+    for(auto &pollen : pollens_array)
+    {
+        delete pollen;
+    }
+    pollens_array.clear();
+    if(animals_array.empty() == true)
+        std::cout<<"deleted animals"<<std::endl;
+
     animals_array.push_back(new AnimalSpecie());
     animals_array.push_back(new AnimalSpecie(Test::first_animal_specie_x, Test::first_animal_specie_y, Gender::Female) );
     vegans_array.push_back(new VegetableSpecie());

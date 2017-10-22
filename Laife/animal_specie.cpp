@@ -16,9 +16,7 @@ AnimalSpecie::AnimalSpecie(int pos_x, int pos_y, Gender g) : Specie(pos_x, pos_y
 }
 
 AnimalSpecie::~AnimalSpecie()
-{
-    delete this;
-}
+{}
 
 void AnimalSpecie::draw_sprite(QPainter *painter)
 {

@@ -46,6 +46,20 @@ void MainWindow::paintEvent(QPaintEvent *event)
         }
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+        case Qt::Key_R :
+        gameState.create_test_game();
+        break;
+
+        default:
+        break;
+    }
+}
+
+
 void MainWindow::time_ring()
 {
     gameState.grow_old();

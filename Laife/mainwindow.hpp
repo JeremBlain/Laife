@@ -2,6 +2,7 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include <QKeyEvent>
 #include "time.h"
 
 #include "animal_specie.hpp"
@@ -21,6 +22,7 @@ public:
     ~MainWindow();
 
     void paintEvent(QPaintEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 public slots:
     void time_ring(); //each time the timer rings : update the species state
