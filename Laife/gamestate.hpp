@@ -24,7 +24,8 @@ public:
 
 
     /** These functions have test purpose. Only for testing some parameters and functions */
-    void create_test_game();
+    void init_test_game();
+    void clear_array();
     void test_breed();
 };
 

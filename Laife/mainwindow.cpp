@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     srand(time(NULL));
 
-    gameState.create_test_game();
+    gameState.init_test_game();
 
     timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
@@ -51,7 +51,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     switch(event->key())
     {
         case Qt::Key_R :
-        gameState.create_test_game();
+        gameState.init_test_game();
         break;
 
         default:

@@ -28,6 +28,7 @@ void VegetableSpecie::draw_sprite(QPainter *painter)
 
 void VegetableSpecie::change_behavior()
 {
+    //have to be changed when breeding work !
     action_state = Action::Breed;
 }
 
