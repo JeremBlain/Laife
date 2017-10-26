@@ -60,7 +60,8 @@ VegetableSpecie* VegetableSpecie::breed()
 Pollen* VegetableSpecie::send_pollen()
 {
     breedable = Constant::BREEDED;
-    return new Pollen(x+15, y+15, 1, 0);
+    int dir_x = rand()%6-3, dir_y = rand()%6-3;
+    return new Pollen(x+15, y+15, dir_x, dir_y);
 }
 
 

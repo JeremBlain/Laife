@@ -33,7 +33,7 @@ namespace Test
     const int first_animal_specie_y = 100;
 
     const int first_vegetable_specie_x = 333;
-    const int first_vegetable_specie_y = 170;
+    const int first_vegetable_specie_y = 340;
 }
 
 
