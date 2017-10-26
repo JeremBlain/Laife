@@ -23,3 +23,11 @@ void Pollen::move()
     x += dir_x;
     y += dir_y;
 }
+
+bool Pollen::is_hitting_vegetable(int x_veg, int y_veg)
+{
+    if( distance(x,y, x_veg,y_veg) < Constant::DISTANCE_MAX_BREED)
+        return true;
+
+    return false;
+}

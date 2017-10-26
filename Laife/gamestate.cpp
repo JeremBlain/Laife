@@ -30,6 +30,7 @@ void GameState::find_partner()
 
 void GameState::breed()
 {
+    //for each couple of animals, see if they can breed (close, and breedable)
     for(unsigned int i = 0; i < animals_array.size(); ++i)
     {
         for(unsigned int j = i+1; j < animals_array.size(); ++j)
@@ -45,7 +46,7 @@ void GameState::breed()
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
-                        animals_array[j]->change_behavior(); // the male have to chnage is state from breed to rest, the state of female is changed in the breed function
+                        animals_array[j]->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
                     }
 
                 }
@@ -59,17 +60,34 @@ void GameState::breed()
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
-                        animals_array[i]->change_behavior(); // the male have to chnage is state from breed to rest, the state of female is changed in the breed function
+                        animals_array[i]->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
                     }
                 }
             }
         }
     }
 
+
+    //for each male veegtable, send pollen (if he can/want breed)
     for(auto &specie : vegans_array)
     {
         if(specie->get_gender() == Gender::Male && specie->get_breedable() == 0)
             pollens_array.push_back(specie->send_pollen());
+    }
+
+    //for each pollen, see if it is close to a female vegetable and make a new vegetable if true
+    for(auto &pollen : pollens_array)
+    {
+        for(auto &specie : vegans_array)
+        {
+            if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
+            {
+                VegetableSpecie* new_born = specie->breed();
+                if(new_born != nullptr)
+                    vegans_array.push_back(new_born);
+            }
+        }
+
     }
 }
 

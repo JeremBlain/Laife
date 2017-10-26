@@ -4,6 +4,7 @@
 
 #include <QPainter>
 #include "enumerations.hpp"
+#include "general_functions.hpp"
 
 class Pollen
 {
@@ -14,6 +15,7 @@ public:
 
     void draw_sprite(QPainter *painter);
     void move();
+    bool is_hitting_vegetable(int x_veg, int y_veg);
 
 
 private:
