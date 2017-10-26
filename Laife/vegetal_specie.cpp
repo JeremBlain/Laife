@@ -40,10 +40,20 @@ VegetableSpecie* VegetableSpecie::breed()
     {
         VegetableSpecie* new_born;
         int proba_M_F = rand()%2;
+        int rand_x = 0, rand_y = 0;
+
+        //generate a x and y between -20 and 20 for the new_born (we don't want to be on the mother so x and y must be superior than |height/2|
+        while(rand_x > -height/2 && rand_x < height/2)
+            rand_x = rand()%40-20;
+
+        while(rand_y > -height/2 && rand_y < height/2)
+            rand_y = rand()%40-20;
+
+
         if(proba_M_F == 0)
-            new_born = new VegetableSpecie(x+25, y+25, Gender::Male);
+            new_born = new VegetableSpecie(x+rand_x, y+rand_y, Gender::Male);
         else
-            new_born = new VegetableSpecie(x+25, y+25, Gender::Female);
+            new_born = new VegetableSpecie(x+rand_x, y+rand_y, Gender::Female);
 
         breedable = Constant::BREEDED;
         action_state = Action::Rest;
