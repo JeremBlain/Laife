@@ -1,6 +1,6 @@
 #include "vegetal_specie.hpp"
 
-VegetableSpecie::VegetableSpecie() : Specie(150, 170, 30, Gender::Male)
+VegetableSpecie::VegetableSpecie() : Specie(600, 350, 30, Gender::Male)
 {
 
 }

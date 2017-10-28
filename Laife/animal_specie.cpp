@@ -1,6 +1,6 @@
 #include "animal_specie.hpp"
 
-AnimalSpecie::AnimalSpecie() : Specie(250, 60, 24, Gender::Male),
+AnimalSpecie::AnimalSpecie() : Specie(300, 450, 24, Gender::Male),
                                  hunger(100),
                                  thirst(100),
                                  hapiness(100),
