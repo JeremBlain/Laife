@@ -21,7 +21,7 @@ namespace Constant
     const int BREEDED = 100;
     const int COPULATE = 50;
     const int DISTANCE_MIN_FIND_PARTNER = 250;
-    const int DISTANCE_MAX_BREED = 10;
+    const int DISTANCE_MAX_BREED = 30;
 
     const int POLLEN_SIZE = 10;
 
@@ -32,9 +32,13 @@ namespace Test
 {
     const int first_animal_specie_x = 300;
     const int first_animal_specie_y = 500;
+    const int second_animal_specie_x = 350;
+    const int second_animal_specie_y = 450;
 
     const int first_vegetable_specie_x = 480;
     const int first_vegetable_specie_y = 390;
+    const int second_vegetable_specie_x = 520;
+    const int second_vegetable_specie_y = 340;
 
     const int collisiontest_1_x = 200;
     const int collisiontest_1_y = 200;

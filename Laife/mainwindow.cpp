@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     srand(time(NULL));
 
-    gameState.test_collision();
+    gameState.init_test_game();
 
     timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(time_ring()));
