@@ -9,7 +9,10 @@ void GameState::move()
     for(auto &specie : animals_array)
     {
         if(specie->get_action_state() == Action::Move)
-            specie->move(3);
+        {
+            if(collision(specie) == false)
+                specie->move( Constant::SPEED );
+        }
     }
 
     if(!pollens_array.empty())
@@ -17,6 +20,27 @@ void GameState::move()
         {
             pollen->move();
         }
+}
+
+bool GameState::collision(AnimalSpecie* animal)
+{
+    for(auto &species : animals_array)
+    {
+        if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
+                             species->get_number()))
+        {
+            return true;
+        }
+    }
+
+    for(auto &species : vegans_array)
+    {
+        if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
+                              species->get_number()))
+            return true;
+    }
+
+    return false;
 }
 
 void GameState::find_partner()
@@ -42,7 +66,7 @@ void GameState::breed()
                 &&  animals_array[j]->get_gender() == Gender::Male   && animals_array[j]->get_breedable() == 0)
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
-                    AnimalSpecie *new_born = animals_array[i]->breed();
+                    AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size());
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
@@ -56,7 +80,7 @@ void GameState::breed()
                 &&  animals_array[j]->get_gender() == Gender::Female && animals_array[j]->get_breedable() == 0)
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
-                    AnimalSpecie *new_born = animals_array[j]->breed();
+                    AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size());
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
@@ -82,7 +106,7 @@ void GameState::breed()
         {
             if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
             {
-                VegetableSpecie* new_born = specie->breed();
+                VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size());
                 if(new_born != nullptr)
                     vegans_array.push_back(new_born);
             }
@@ -123,10 +147,8 @@ void GameState::init_test_game()
     //empty vectors first
     clear_array();
 
-    animals_array.push_back(new AnimalSpecie());
-    animals_array.push_back(new AnimalSpecie(Test::first_animal_specie_x, Test::first_animal_specie_y, Gender::Female) );
-    vegans_array.push_back(new VegetableSpecie());
-    vegans_array.push_back(new VegetableSpecie(Test::first_vegetable_specie_x, Test::first_vegetable_specie_y, Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(Test::first_animal_specie_x, Test::first_animal_specie_y, animals_array.size()+vegans_array.size(), Gender::Female) );
+    vegans_array.push_back(new VegetableSpecie(Test::first_vegetable_specie_x, Test::first_vegetable_specie_y, animals_array.size()+vegans_array.size(), Gender::Female) );
 }
 
 void GameState::clear_array()
@@ -153,7 +175,7 @@ void GameState::clear_array()
 void GameState::test_breed()
 {
     std::cout<<"before breeding"<<std::endl;
-    AnimalSpecie *new_born = animals_array[1]->breed();
+    AnimalSpecie *new_born = animals_array[1]->breed(animals_array.size()+vegans_array.size());
     std::cout<<"after breeding"<<std::endl;
 
     if(new_born == nullptr)
@@ -163,4 +185,16 @@ void GameState::test_breed()
 
     std::cout<<"after pushing"<<std::endl;
 
+}
+
+void GameState::test_collision()
+{
+    //empty vectors first
+    clear_array();
+
+    animals_array.push_back(new AnimalSpecie(Test::collisiontest_1_x, Test::collisiontest_1_y, animals_array.size()+vegans_array.size(), Gender::Male) );
+    animals_array.push_back(new AnimalSpecie(Test::collisiontest_2_x, Test::collisiontest_2_y, animals_array.size()+vegans_array.size(), Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(Test::collisiontest_3_x, Test::collisiontest_3_y, animals_array.size()+vegans_array.size(), Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(Test::collisiontest_4_x, Test::collisiontest_4_y, animals_array.size()+vegans_array.size(), Gender::Female) );
+    vegans_array.push_back(new VegetableSpecie(Test::collisiontest_5_x, Test::collisiontest_5_y, animals_array.size()+vegans_array.size(), Gender::Female) );
 }

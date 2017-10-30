@@ -1,15 +1,14 @@
 #include "animal_specie.hpp"
 
-AnimalSpecie::AnimalSpecie() : Specie(300, 450, 24, Gender::Male),
+//should never be used
+AnimalSpecie::AnimalSpecie() : Specie(),
                                  hunger(100),
                                  thirst(100),
                                  hapiness(100),
                                  tiredness(100)
-{
+{}
 
-}
-
-AnimalSpecie::AnimalSpecie(int pos_x, int pos_y, Gender g) : Specie(pos_x, pos_y, 24, g),
+AnimalSpecie::AnimalSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, 24, g),
                                                      hunger(100), thirst(100), hapiness(100), tiredness(100)
 {
 
@@ -53,7 +52,7 @@ void AnimalSpecie::change_behavior()
     }
 }
 
-AnimalSpecie* AnimalSpecie::breed()
+AnimalSpecie* AnimalSpecie::breed(int num_species)
 {
     //this is the female which gives the birth and we need the other specie to be a male
     if(breedable == 0)
@@ -62,12 +61,12 @@ AnimalSpecie* AnimalSpecie::breed()
         int proba_M_F = rand()%2;
 
         //generate a x and y between -20 and 20 for the new_born (we don't want to be on the mother so x and y must be superior than |height/2|
-        int rand_x = generate_random_pos(40, 20, height/2), rand_y = generate_random_pos(40, 20, height/2);
+        int rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
 
         if(proba_M_F == 0)
-            new_born = new AnimalSpecie(x+rand_x, y+rand_y, Gender::Male);
+            new_born = new AnimalSpecie(x+rand_x, y+rand_y, num_species, Gender::Male);
         else
-            new_born = new AnimalSpecie(x+rand_x, y+rand_y, Gender::Female);
+            new_born = new AnimalSpecie(x+rand_x, y+rand_y, num_species, Gender::Female);
 
         breedable = Constant::BREEDED;
         action_state = Action::Rest;

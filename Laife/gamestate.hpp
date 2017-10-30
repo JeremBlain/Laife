@@ -17,6 +17,7 @@ public:
 
     //all these methods check if the species have the correct behavior (ex : move() check if the behavior of species is Move)
     void move(); //move all the animals species
+    bool collision(AnimalSpecie *animal); //test all entities to avoid collisison with animal
     void find_partner(); //try to find a partner for all the species
     void breed();
     void change_behavior();
@@ -27,6 +28,7 @@ public:
     void init_test_game();
     void clear_array();
     void test_breed();
+    void test_collision();
 };
 
 #endif // GAMESTATE_HPP

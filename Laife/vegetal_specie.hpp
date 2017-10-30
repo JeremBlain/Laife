@@ -8,7 +8,7 @@ class VegetableSpecie : public Specie
 {
 public:
     VegetableSpecie();
-    VegetableSpecie(int pos_x, int pos_y, Gender g);
+    VegetableSpecie(int pos_x, int pos_y, int n, Gender g);
 
     ~VegetableSpecie();
 
@@ -16,7 +16,7 @@ public:
     void change_behavior();
 
     //breeding related methods
-    VegetableSpecie* breed();
+    VegetableSpecie* breed(int num_species);
     Pollen* send_pollen();
     void copulate();
 };

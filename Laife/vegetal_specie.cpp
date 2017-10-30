@@ -1,11 +1,12 @@
 #include "vegetal_specie.hpp"
 
-VegetableSpecie::VegetableSpecie() : Specie(600, 350, 30, Gender::Male)
+//should never be used
+VegetableSpecie::VegetableSpecie() : Specie()
 {
 
 }
 
-VegetableSpecie::VegetableSpecie(int pos_x, int pos_y, Gender g) : Specie(pos_x, pos_y, 30, g)
+VegetableSpecie::VegetableSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, 30, g)
 {
 
 }
@@ -33,7 +34,7 @@ void VegetableSpecie::change_behavior()
 }
 
 
-VegetableSpecie* VegetableSpecie::breed()
+VegetableSpecie* VegetableSpecie::breed(int num_species)
 {
     //this is the female which gives the birth and we need the other specie to be a male
     if(breedable == 0)
@@ -45,9 +46,9 @@ VegetableSpecie* VegetableSpecie::breed()
         int rand_x = generate_random_pos(40, 20, height/2), rand_y = generate_random_pos(40, 20, height/2);
 
         if(proba_M_F == 0)
-            new_born = new VegetableSpecie(x+rand_x, y+rand_y, Gender::Male);
+            new_born = new VegetableSpecie(x+rand_x, y+rand_y, num_species, Gender::Male);
         else
-            new_born = new VegetableSpecie(x+rand_x, y+rand_y, Gender::Female);
+            new_born = new VegetableSpecie(x+rand_x, y+rand_y, num_species, Gender::Female);
 
         breedable = Constant::BREEDED;
         action_state = Action::Rest;

@@ -10,16 +10,17 @@ class Specie
 {
 public:
     Specie();
-    Specie(int pos_x, int pos_y, int h, Gender g);
+    Specie(int pos_x, int pos_y, int n, int h, Gender g);
 
     virtual ~Specie() = 0;
 
     virtual void draw_sprite(QPainter *painter) = 0; //the color depends on the gender
     virtual void change_behavior() = 0;
-    virtual Specie* breed() = 0;
+    virtual Specie* breed(int num_species) = 0;
     virtual void copulate() = 0; //Spcie is now in breed state. This the step before the species mahe the new born
 
-    void move(int speed);
+    void move(int speed);    
+    bool collision(QRect obj_box, int obj_num); //if the specie collide to something (something with bounding box coords nt parameters
     void decrement_breedable();
     void rest();
 
@@ -29,12 +30,15 @@ public:
     Action get_action_state();
     int get_x();
     int get_y();
+    int get_number();
+    int get_height();
 
 protected :
     int x, y; //coords
     Action action_state; //Behavior of the specie
     int pos_x_reach; //coordinates the specie want to reach
     int pos_y_reach;
+    int number; //each individual have a number
 
 
     // Caracteristics :
