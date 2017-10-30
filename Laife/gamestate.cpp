@@ -147,10 +147,12 @@ void GameState::init_test_game()
     //empty vectors first
     clear_array();
 
-    animals_array.push_back(new AnimalSpecie(Test::first_animal_specie_x, Test::first_animal_specie_y, animals_array.size()+vegans_array.size(), Gender::Female) );
-    animals_array.push_back(new AnimalSpecie(Test::second_animal_specie_x, Test::second_animal_specie_y, animals_array.size()+vegans_array.size(), Gender::Male) );
-    vegans_array.push_back(new VegetableSpecie(Test::first_vegetable_specie_x, Test::first_vegetable_specie_y, animals_array.size()+vegans_array.size(), Gender::Female) );
-    vegans_array.push_back(new VegetableSpecie(Test::second_vegetable_specie_x, Test::second_vegetable_specie_y, animals_array.size()+vegans_array.size(), Gender::Male) );
+    animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_1, Test::animal_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_2, Test::animal_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
+    animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_3, Test::animal_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Male) );
+    vegans_array.push_back(new VegetableSpecie(Test::vegetable_specie_x_1, Test::vegetable_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
+    vegans_array.push_back(new VegetableSpecie(Test::vegetable_specie_x_2, Test::vegetable_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
+    vegans_array.push_back(new VegetableSpecie(Test::vegetable_specie_x_3, Test::vegetable_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Female) );
 }
 
 void GameState::clear_array()

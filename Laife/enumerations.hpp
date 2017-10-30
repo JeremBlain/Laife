@@ -30,15 +30,19 @@ namespace Constant
 
 namespace Test
 {
-    const int first_animal_specie_x = 300;
-    const int first_animal_specie_y = 500;
-    const int second_animal_specie_x = 350;
-    const int second_animal_specie_y = 450;
+    const int animal_specie_x_1 = 300;
+    const int animal_specie_y_1 = 500;
+    const int animal_specie_x_2 = 350;
+    const int animal_specie_y_2 = 450;
+    const int animal_specie_x_3 = 500;
+    const int animal_specie_y_3 = 800;
 
-    const int first_vegetable_specie_x = 480;
-    const int first_vegetable_specie_y = 390;
-    const int second_vegetable_specie_x = 520;
-    const int second_vegetable_specie_y = 340;
+    const int vegetable_specie_x_1 = 480;
+    const int vegetable_specie_y_1 = 390;
+    const int vegetable_specie_x_2 = 520;
+    const int vegetable_specie_y_2 = 340;
+    const int vegetable_specie_x_3 = 800;
+    const int vegetable_specie_y_3 = 290;
 
     const int collisiontest_1_x = 200;
     const int collisiontest_1_y = 200;

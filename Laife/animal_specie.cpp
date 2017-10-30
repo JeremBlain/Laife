@@ -61,7 +61,7 @@ AnimalSpecie* AnimalSpecie::breed(int num_species)
         int proba_M_F = rand()%2;
 
         //generate a x and y between -20 and 20 for the new_born (we don't want to be on the mother so x and y must be superior than |height/2|
-        int rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+        int rand_x = -1, generate_random_pos(80, 40, height), rand_y = -1; generate_random_pos(80, 40, height);
 
         if(proba_M_F == 0)
             new_born = new AnimalSpecie(x+rand_x, y+rand_y, num_species, Gender::Male);
