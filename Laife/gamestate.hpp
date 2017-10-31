@@ -29,6 +29,7 @@ public:
     void find_partner(); //try to find a partner for all the species
     void breeding();
     void breeding_animals(AnimalSpecie *female, AnimalSpecie *male);
+    void breeding_vegetables(VegetableSpecie *female);
     void change_behavior();
     void grow_old(); //method to grow old species, like his age, his breedable state, etc...
 

@@ -135,14 +135,7 @@ void GameState::breeding()
         {
             if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
             {
-                int pos_x = -1, pos_y = -1;
-                bool valid_pos = generate_position_new_born(specie, pos_x, pos_y);
-                if(valid_pos == false) //false <=> not valide position for the new born, abord
-                    return; //if there is not place to go, abord
-
-                VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
-                if(new_born != nullptr)
-                    vegans_array.push_back(new_born);
+                breeding_vegetables(specie);
             }
         }
 
@@ -164,6 +157,18 @@ void GameState::breeding_animals(AnimalSpecie* female, AnimalSpecie* male)
         animals_array.push_back(new_born);
         male->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
     }
+}
+
+void GameState::breeding_vegetables(VegetableSpecie *female)
+{
+    int pos_x = -1, pos_y = -1;
+    bool valid_pos = generate_position_new_born(female, pos_x, pos_y);
+    if(valid_pos == false) //false <=> not valide position for the new born, abord
+        return; //if there is not place to go, abord
+
+    VegetableSpecie* new_born = female->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
+    if(new_born != nullptr)
+        vegans_array.push_back(new_born);
 }
 
 void GameState::change_behavior()
