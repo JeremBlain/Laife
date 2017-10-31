@@ -64,6 +64,27 @@ bool GameState::collision(QRect hitbox)
     return false; //no collision
 }
 
+bool GameState::generate_position_new_born(Specie* mother, int &pos_x, int &pos_y)
+{
+    int rand_x = -1, rand_y = -1;
+    int height = mother->get_height();
+    int it = 0; //number of iteration, for avoiding infinite loop
+
+    do //make a position for the new born
+    {
+        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
+        ++it;
+    }while(collision(QRect(mother->get_x()+rand_x-height/2, mother->get_y()+rand_y-height/2, height, height)) && it < 15);
+
+    if(it < 15) //if it == 15 so we get out of the while without having a valide position for the newx born, so we return false !
+    {
+        pos_x = mother->get_x()+rand_x;  pos_y = mother->get_y()+rand_y;
+        return true;
+    }
+    else
+        return false;
+}
+
 void GameState::find_partner()
 {
     for(auto &specie : animals_array)
@@ -88,20 +109,12 @@ void GameState::breed()
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
 
-                    int rand_x = -1, rand_y = -1;
-                    int height = animals_array[j]->get_height();
-                    int it = 0; //number of iteration, for avoiding infinite loop
-
-                    do //make a position for the new born
-                    {
-                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
-                        it++;
-                    }while(collision(QRect(animals_array[i]->get_x()+rand_x-height/2, animals_array[i]->get_y()+rand_y-height/2, height, height)) && it < 15);
-
-                    if(it >= 15)
+                    int pos_x = -1, pos_y = -1;
+                    bool valid_pos = generate_position_new_born(animals_array[i], pos_x, pos_y);
+                    if(valid_pos == false) //false <=> not valide position for the new born, abord
                         return; //if there is not place to go, abord
 
-                    AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
+                    AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
@@ -115,20 +128,12 @@ void GameState::breed()
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
 
-                    int rand_x = -1, rand_y = -1;
-                    int height = animals_array[j]->get_height();
-                    int it = 0; //number of iteration, for avoiding infinite loop
-
-                    do //make a position for the new born
-                    {
-                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
-                        it++;
-                    }while(collision(QRect(animals_array[j]->get_x()+rand_x-height/2, animals_array[j]->get_y()+rand_y-height/2, height, height))  && it < 15);
-
-                    if(it >= 15)
+                    int pos_x = -1, pos_y = -1;
+                    bool valid_pos = generate_position_new_born(animals_array[i], pos_x, pos_y);
+                    if(valid_pos == false) //false <=> not valide position for the new born, abord
                         return; //if there is not place to go, abord
 
-                    AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
+                    AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
@@ -154,20 +159,12 @@ void GameState::breed()
         {
             if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
             {
-                int rand_x = -1, rand_y = -1;
-                int height = specie->get_height();
-                int it = 0; //number of iteration, for avoiding infinite loop
-
-                do //make a position for the new born
-                {
-                    rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
-                    it++;
-                }while( collision(QRect(specie->get_x()+rand_x-height/2, specie->get_y()+rand_y-height/2, height, height)) && it < 15 );
-
-                if(it >= 15)
+                int pos_x = -1, pos_y = -1;
+                bool valid_pos = generate_position_new_born(specie, pos_x, pos_y);
+                if(valid_pos == false) //false <=> not valide position for the new born, abord
                     return; //if there is not place to go, abord
 
-                VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size(), specie->get_x()+rand_x, specie->get_y()+rand_y);
+                VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
                 if(new_born != nullptr)
                     vegans_array.push_back(new_born);
             }

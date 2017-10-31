@@ -24,6 +24,8 @@ public:
     //this one should be used when create a new entities !
     bool collision(QRect hitbox);
 
+    bool generate_position_new_born(Specie *mother, int &pos_x, int &pos_y); //generate a position which do not collide with other entities
+
     void find_partner(); //try to find a partner for all the species
     void breed();
     void change_behavior();
