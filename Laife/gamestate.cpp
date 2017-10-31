@@ -92,7 +92,7 @@ void GameState::breed()
                     int height = animals_array[j]->get_height();
                     do //make a position for the new born
                     {
-                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
                     }while(collision(QRect(animals_array[i]->get_x()+rand_x-height/2, animals_array[i]->get_y()+rand_y-height/2, height, height)));
 
                     AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
@@ -113,7 +113,7 @@ void GameState::breed()
                     int height = animals_array[j]->get_height();
                     do //make a position for the new born
                     {
-                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
                     }while(collision(QRect(animals_array[j]->get_x()+rand_x-height/2, animals_array[j]->get_y()+rand_y-height/2, height, height)));
 
                     AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
@@ -146,7 +146,7 @@ void GameState::breed()
                 int height = specie->get_height();
                 do //make a position for the new born
                 {
-                    rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+                    rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
                 }while( collision(QRect(specie->get_x()+rand_x-height/2, specie->get_y()+rand_y-height/2, height, height)) );
 
                 VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size(), specie->get_x()+rand_x, specie->get_y()+rand_y);
