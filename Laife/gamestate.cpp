@@ -43,6 +43,27 @@ bool GameState::collision(AnimalSpecie* animal)
     return false;
 }
 
+bool GameState::collision(QRect hitbox)
+{
+    for(auto &species : animals_array)
+    {
+        QRect obj_box(species->get_x()-species->get_height()/2, species->get_y()-species->get_height()/2, species->get_height(), species->get_height());
+
+        if(hitbox.intersects(obj_box) == true)
+            return true;
+    }
+
+    for(auto &species : vegans_array)
+    {
+        QRect obj_box(species->get_x()-species->get_height()/2, species->get_y()-species->get_height()/2, species->get_height(), species->get_height());
+
+        if(hitbox.intersects(obj_box) == true)
+            return true;
+    }
+
+    return false; //no collision
+}
+
 void GameState::find_partner()
 {
     for(auto &specie : animals_array)
@@ -66,13 +87,20 @@ void GameState::breed()
                 &&  animals_array[j]->get_gender() == Gender::Male   && animals_array[j]->get_breedable() == 0)
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
-                    AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size());
+
+                    int rand_x = -1, rand_y = -1;
+                    int height = animals_array[j]->get_height();
+                    do //make a position for the new born
+                    {
+                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+                    }while(collision(QRect(animals_array[i]->get_x()+rand_x-height/2, animals_array[i]->get_y()+rand_y-height/2, height, height)));
+
+                    AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
                         animals_array[j]->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
                     }
-
                 }
 
                 //if ith animal is the male and jth is female
@@ -80,7 +108,15 @@ void GameState::breed()
                 &&  animals_array[j]->get_gender() == Gender::Female && animals_array[j]->get_breedable() == 0)
                 {
                     animals_array[i]->copulate(); animals_array[j]->copulate();
-                    AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size());
+
+                    int rand_x = -1, rand_y = -1;
+                    int height = animals_array[j]->get_height();
+                    do //make a position for the new born
+                    {
+                        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+                    }while(collision(QRect(animals_array[j]->get_x()+rand_x-height/2, animals_array[j]->get_y()+rand_y-height/2, height, height)));
+
+                    AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
                     if(new_born != nullptr)
                     {
                         animals_array.push_back(new_born);
@@ -106,7 +142,14 @@ void GameState::breed()
         {
             if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
             {
-                VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size());
+                int rand_x = -1, rand_y = -1;
+                int height = specie->get_height();
+                do //make a position for the new born
+                {
+                    rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height);
+                }while( collision(QRect(specie->get_x()+rand_x-height/2, specie->get_y()+rand_y-height/2, height, height)) );
+
+                VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size(), specie->get_x()+rand_x, specie->get_y()+rand_y);
                 if(new_born != nullptr)
                     vegans_array.push_back(new_born);
             }
@@ -177,9 +220,10 @@ void GameState::clear_array()
 }
 
 void GameState::test_breed()
-{
+{/*DO it again because lot of thing change
+
     std::cout<<"before breeding"<<std::endl;
-    AnimalSpecie *new_born = animals_array[1]->breed(animals_array.size()+vegans_array.size());
+    AnimalSpecie *new_born = animals_array[0]->breed(animals_array.size()+vegans_array.size());
     std::cout<<"after breeding"<<std::endl;
 
     if(new_born == nullptr)
@@ -187,7 +231,7 @@ void GameState::test_breed()
     else
         animals_array.push_back(new_born);
 
-    std::cout<<"after pushing"<<std::endl;
+    std::cout<<"after pushing"<<std::endl;*/
 
 }
 

@@ -16,7 +16,7 @@ public:
     void change_behavior(); //if the animal rest, it has the probabilty to change is behavior
 
     //Breeding behavior
-    AnimalSpecie* breed(int num_species); //we check if the other species is a male
+    AnimalSpecie* breed(int num_species, int pos_x, int pos_y); //we check if the other species is a male
     void copulate();
     //Check the animals species array and take the first species that is close enough
     //then we set the position to reach

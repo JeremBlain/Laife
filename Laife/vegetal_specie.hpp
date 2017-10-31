@@ -16,7 +16,7 @@ public:
     void change_behavior();
 
     //breeding related methods
-    VegetableSpecie* breed(int num_species);
+    VegetableSpecie* breed(int num_species, int pos_x, int pos_y);
     Pollen* send_pollen();
     void copulate();
 };

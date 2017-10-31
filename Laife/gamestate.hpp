@@ -17,7 +17,13 @@ public:
 
     //all these methods check if the species have the correct behavior (ex : move() check if the behavior of species is Move)
     void move(); //move all the animals species
-    bool collision(AnimalSpecie *animal); //test all entities to avoid collisison with animal
+
+    //test all entities to avoid collisison with animal. Should be used when moving
+    bool collision(AnimalSpecie *animal);
+    //test all entities to avoid collisison with hitbox. The num_species is the number linkled with the hitbox entities
+    //this one should be used when create a new entities !
+    bool collision(QRect hitbox);
+
     void find_partner(); //try to find a partner for all the species
     void breed();
     void change_behavior();

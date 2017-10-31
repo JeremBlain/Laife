@@ -34,7 +34,7 @@ void VegetableSpecie::change_behavior()
 }
 
 
-VegetableSpecie* VegetableSpecie::breed(int num_species)
+VegetableSpecie* VegetableSpecie::breed(int num_species, int pos_x, int pos_y)
 {
     //this is the female which gives the birth and we need the other specie to be a male
     if(breedable == 0)
@@ -43,12 +43,12 @@ VegetableSpecie* VegetableSpecie::breed(int num_species)
         int proba_M_F = rand()%2;
 
         //generate a x and y between -20 and 20 for the new_born (we don't want to be on the mother so x and y must be superior than |height/2|
-        int rand_x = generate_random_pos(40, 20, height/2), rand_y = generate_random_pos(40, 20, height/2);
+        //int rand_x = generate_random_pos(40, 20, height/2), rand_y = generate_random_pos(40, 20, height/2);
 
         if(proba_M_F == 0)
-            new_born = new VegetableSpecie(x+rand_x, y+rand_y, num_species, Gender::Male);
+            new_born = new VegetableSpecie(pos_x, pos_y, num_species, Gender::Male);
         else
-            new_born = new VegetableSpecie(x+rand_x, y+rand_y, num_species, Gender::Female);
+            new_born = new VegetableSpecie(pos_x, pos_y, num_species, Gender::Female);
 
         breedable = Constant::BREEDED;
         action_state = Action::Rest;
