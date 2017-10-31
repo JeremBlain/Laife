@@ -94,7 +94,7 @@ void GameState::find_partner()
     }
 }
 
-void GameState::breed()
+void GameState::breeding()
 {
     //for each couple of animals, see if they can breed (close, and breedable)
     for(unsigned int i = 0; i < animals_array.size(); ++i)
@@ -107,38 +107,14 @@ void GameState::breed()
                 if( animals_array[i]->get_gender() == Gender::Female && animals_array[i]->get_breedable() == 0
                 &&  animals_array[j]->get_gender() == Gender::Male   && animals_array[j]->get_breedable() == 0)
                 {
-                    animals_array[i]->copulate(); animals_array[j]->copulate();
-
-                    int pos_x = -1, pos_y = -1;
-                    bool valid_pos = generate_position_new_born(animals_array[i], pos_x, pos_y);
-                    if(valid_pos == false) //false <=> not valide position for the new born, abord
-                        return; //if there is not place to go, abord
-
-                    AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
-                    if(new_born != nullptr)
-                    {
-                        animals_array.push_back(new_born);
-                        animals_array[j]->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
-                    }
+                    breeding_animals(animals_array[i], animals_array[j]);
                 }
 
                 //if ith animal is the male and jth is female
                 if( animals_array[i]->get_gender() == Gender::Male   && animals_array[i]->get_breedable() == 0
                 &&  animals_array[j]->get_gender() == Gender::Female && animals_array[j]->get_breedable() == 0)
                 {
-                    animals_array[i]->copulate(); animals_array[j]->copulate();
-
-                    int pos_x = -1, pos_y = -1;
-                    bool valid_pos = generate_position_new_born(animals_array[i], pos_x, pos_y);
-                    if(valid_pos == false) //false <=> not valide position for the new born, abord
-                        return; //if there is not place to go, abord
-
-                    AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
-                    if(new_born != nullptr)
-                    {
-                        animals_array.push_back(new_born);
-                        animals_array[i]->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
-                    }
+                    breeding_animals(animals_array[j], animals_array[i]);
                 }
             }
         }
@@ -170,6 +146,23 @@ void GameState::breed()
             }
         }
 
+    }
+}
+
+void GameState::breeding_animals(AnimalSpecie* female, AnimalSpecie* male)
+{
+    male->copulate(); female->copulate();
+
+    int pos_x = -1, pos_y = -1;
+    bool valid_pos = generate_position_new_born(female, pos_x, pos_y);
+    if(valid_pos == false) //false <=> not valide position for the new born, abord
+        return; //if there is not place to go, abord
+
+    AnimalSpecie *new_born = female->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
+    if(new_born != nullptr)
+    {
+        animals_array.push_back(new_born);
+        male->change_behavior(); // the male have to change is state from breed to rest, the state of female is changed in the breed function
     }
 }
 

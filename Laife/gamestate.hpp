@@ -27,7 +27,8 @@ public:
     bool generate_position_new_born(Specie *mother, int &pos_x, int &pos_y); //generate a position which do not collide with other entities
 
     void find_partner(); //try to find a partner for all the species
-    void breed();
+    void breeding();
+    void breeding_animals(AnimalSpecie *female, AnimalSpecie *male);
     void change_behavior();
     void grow_old(); //method to grow old species, like his age, his breedable state, etc...
 
