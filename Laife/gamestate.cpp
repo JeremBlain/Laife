@@ -90,10 +90,16 @@ void GameState::breed()
 
                     int rand_x = -1, rand_y = -1;
                     int height = animals_array[j]->get_height();
+                    int it = 0; //number of iteration, for avoiding infinite loop
+
                     do //make a position for the new born
                     {
                         rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
-                    }while(collision(QRect(animals_array[i]->get_x()+rand_x-height/2, animals_array[i]->get_y()+rand_y-height/2, height, height)));
+                        it++;
+                    }while(collision(QRect(animals_array[i]->get_x()+rand_x-height/2, animals_array[i]->get_y()+rand_y-height/2, height, height)) && it < 15);
+
+                    if(it >= 15)
+                        return; //if there is not place to go, abord
 
                     AnimalSpecie *new_born = animals_array[i]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
                     if(new_born != nullptr)
@@ -111,10 +117,16 @@ void GameState::breed()
 
                     int rand_x = -1, rand_y = -1;
                     int height = animals_array[j]->get_height();
+                    int it = 0; //number of iteration, for avoiding infinite loop
+
                     do //make a position for the new born
                     {
                         rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
-                    }while(collision(QRect(animals_array[j]->get_x()+rand_x-height/2, animals_array[j]->get_y()+rand_y-height/2, height, height)));
+                        it++;
+                    }while(collision(QRect(animals_array[j]->get_x()+rand_x-height/2, animals_array[j]->get_y()+rand_y-height/2, height, height))  && it < 15);
+
+                    if(it >= 15)
+                        return; //if there is not place to go, abord
 
                     AnimalSpecie *new_born = animals_array[j]->breed(animals_array.size()+vegans_array.size(), animals_array[j]->get_x()+rand_x, animals_array[j]->get_y()+rand_y);
                     if(new_born != nullptr)
@@ -144,10 +156,16 @@ void GameState::breed()
             {
                 int rand_x = -1, rand_y = -1;
                 int height = specie->get_height();
+                int it = 0; //number of iteration, for avoiding infinite loop
+
                 do //make a position for the new born
                 {
                     rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
-                }while( collision(QRect(specie->get_x()+rand_x-height/2, specie->get_y()+rand_y-height/2, height, height)) );
+                    it++;
+                }while( collision(QRect(specie->get_x()+rand_x-height/2, specie->get_y()+rand_y-height/2, height, height)) && it < 15 );
+
+                if(it >= 15)
+                    return; //if there is not place to go, abord
 
                 VegetableSpecie* new_born = specie->breed(animals_array.size()+vegans_array.size(), specie->get_x()+rand_x, specie->get_y()+rand_y);
                 if(new_born != nullptr)
