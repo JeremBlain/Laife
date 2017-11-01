@@ -1,3 +1,5 @@
 build*
+Laife/debug
+Laife/release
 Laife/Laife.pro.user*
 *.o
