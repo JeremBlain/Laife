@@ -229,23 +229,33 @@ void GameState::clear_array()
     {
         delete pollen;
     }
-    pollens_array.clear();//all the pointer are freed so wer can clear the array without leaks
+    pollens_array.clear();//all the pointer are freed so we can clear the array without leaks
 }
 
 void GameState::test_breed()
-{/*DO it again because lot of thing change
+{/*DO it again because lot of thing change*/
 
-    std::cout<<"before breeding"<<std::endl;
-    AnimalSpecie *new_born = animals_array[0]->breed(animals_array.size()+vegans_array.size());
-    std::cout<<"after breeding"<<std::endl;
+    std::cout<<"before breeding animal"<<std::endl;
+    AnimalSpecie *new_born_a = animals_array[0]->breed(animals_array.size()+vegans_array.size(), 700, 700); //the baby is sent to the coords (700,700)
+    std::cout<<"after breeding animal"<<std::endl;
 
-    if(new_born == nullptr)
+    if(new_born_a == nullptr)
         std::cout<<"can't pushing, new_born is nullptr"<<std::endl;
     else
-        animals_array.push_back(new_born);
+        animals_array.push_back(new_born_a);
 
-    std::cout<<"after pushing"<<std::endl;*/
+    std::cout<<"after pushing animal"<<std::endl;
 
+    std::cout<<"before breeding vegetable"<<std::endl;
+    VegetableSpecie *new_born_v = vegans_array[0]->breed(animals_array.size()+vegans_array.size(), 800, 800); //the baby is sent to the coords (800,800)
+    std::cout<<"after breeding vegetable"<<std::endl;
+
+    if(new_born_v == nullptr)
+        std::cout<<"can't pushing, new_born is nullptr"<<std::endl;
+    else
+        vegans_array.push_back(new_born_v);
+
+    std::cout<<"after pushing vegetable"<<std::endl;
 }
 
 void GameState::test_collision()
