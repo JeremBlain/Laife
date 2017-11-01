@@ -64,16 +64,15 @@ Pollen VegetableSpecie::send_pollen()
     int rand_x = generate_random_pos(30, 15, 0), rand_y = generate_random_pos(30, 15, 0);
 
     //dir is for the direction of movement
-    int dir_x = rand()%6-3, dir_y = rand()%6-3;
-    //int dir_x = generate_random_pos(6, 3, 0), dir_y = generate_random_pos(6, 3, 0);
+    int dir_x = generate_random_pos(6, 3, 0), dir_y = generate_random_pos(6, 3, 0);
      //regenerate the direction until the pollen move !
-    /*while(dir_x == 0 && dir_y == 0)
+    while(dir_x == 0 && dir_y == 0)
     {
         dir_x = generate_random_pos(6, 3, 0);
         dir_y = generate_random_pos(6, 3, 0);
-    }*/
+    }
 
-    return Pollen(x+15, y+15, dir_x, dir_y);
+    return Pollen(x+rand_x, y+rand_y, dir_x, dir_y);
 }
 
 
