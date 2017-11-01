@@ -61,8 +61,18 @@ VegetableSpecie* VegetableSpecie::breed(int num_species, int pos_x, int pos_y)
 Pollen* VegetableSpecie::send_pollen()
 {
     breedable = Constant::BREEDED;
-    int dir_x = rand()%6-3, dir_y = rand()%6-3;
-    return new Pollen(x+15, y+15, dir_x, dir_y);
+    int rand_x = generate_random_pos(30, 15, 0), rand_y = generate_random_pos(30, 15, 0);
+
+    int dir_x = generate_random_pos(6, 3, 0), dir_y = generate_random_pos(6, 3, 0);
+     //regenerate the direction until the pollen move !
+    while(dir_x == 0 || dir_y == 0)
+    {
+        dir_x = generate_random_pos(6, 3, 0);
+        dir_y = generate_random_pos(6, 3, 0);
+    }
+
+
+    return new Pollen(x+rand_x, y+rand_y, dir_x, dir_y);
 }
 
 

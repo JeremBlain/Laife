@@ -37,7 +37,7 @@ public:
     /** These functions have test purpose. Only for testing some parameters and functions */
     void init_test_game();
     void clear_array();
-    void test_breed();
+    void test_breed(); //used it after init_test_game !
     void test_collision();
 };
 

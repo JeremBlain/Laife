@@ -136,6 +136,7 @@ void GameState::breeding()
             if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
             {
                 breeding_vegetables(specie);
+                delete pollen;
             }
         }
 
@@ -232,8 +233,8 @@ void GameState::clear_array()
     pollens_array.clear();//all the pointer are freed so we can clear the array without leaks
 }
 
-void GameState::test_breed()
-{/*DO it again because lot of thing change*/
+void GameState::test_breed() //used it after init_test_game !
+{
 
     std::cout<<"before breeding animal"<<std::endl;
     AnimalSpecie *new_born_a = animals_array[0]->breed(animals_array.size()+vegans_array.size(), 700, 700); //the baby is sent to the coords (700,700)
