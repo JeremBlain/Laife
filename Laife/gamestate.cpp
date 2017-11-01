@@ -18,7 +18,7 @@ void GameState::move()
     if(!pollens_array.empty())
         for(auto &pollen : pollens_array)
         {
-            pollen->move();
+            pollen.move();
         }
 }
 
@@ -129,14 +129,14 @@ void GameState::breeding()
     }
 
     //for each pollen, see if it is close to a female vegetable and make a new vegetable if true
-    for(auto &pollen : pollens_array)
+    for(auto it = pollens_array.begin(); it < pollens_array.end(); ++it)
     {
         for(auto &specie : vegans_array)
         {
-            if(specie->get_gender() == Gender::Female && pollen->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
+            if(specie->get_gender() == Gender::Female && it->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
             {
                 breeding_vegetables(specie);
-                delete pollen;
+                pollens_array.erase(it); //the pollen is destroy when it is used for breed
             }
         }
 
@@ -226,10 +226,10 @@ void GameState::clear_array()
     }
     vegans_array.clear();//all the pointer are freed so wer can clear the array without leaks
 
-    for(auto &pollen : pollens_array)
+   /* for(auto &pollen : pollens_array)
     {
         delete pollen;
-    }
+    }*/
     pollens_array.clear();//all the pointer are freed so we can clear the array without leaks
 }
 

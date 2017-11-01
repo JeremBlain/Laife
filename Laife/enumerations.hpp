@@ -25,7 +25,7 @@ namespace Constant
 
     const int POLLEN_SIZE = 10;
 
-    const int TICK = 100; //millisecond
+    const int TICK = 70; //millisecond
 }
 
 namespace Test

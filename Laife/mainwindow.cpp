@@ -43,7 +43,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
     if(!gameState.pollens_array.empty())
         for(auto &pollen : gameState.pollens_array)
         {
-            pollen->draw_sprite(&painter);
+            pollen.draw_sprite(&painter);
         }
 }
 
