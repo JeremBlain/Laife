@@ -6,7 +6,7 @@
 #include "time.h"
 
 #include "animal_specie.hpp"
-#include "vegetal_specie.hpp"
+#include "plant_specie.hpp"
 #include "gamestate.hpp"
 
 namespace Ui {

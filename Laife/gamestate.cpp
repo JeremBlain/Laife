@@ -128,14 +128,14 @@ void GameState::breeding()
             pollens_array.push_back(specie->send_pollen());
     }
 
-    //for each pollen, see if it is close to a female vegetable and make a new vegetable if true
+    //for each pollen, see if it is close to a female plant and make a new plant if true
     for(auto it = pollens_array.begin(); it < pollens_array.end(); ++it)
     {
         for(auto &specie : vegans_array)
         {
-            if(specie->get_gender() == Gender::Female && it->is_hitting_vegetable(specie->get_x(), specie->get_y()) == true)
+            if(specie->get_gender() == Gender::Female && it->is_hitting_plant(specie->get_x(), specie->get_y()) == true)
             {
-                breeding_vegetables(specie);
+                breeding_plants(specie);
                 pollens_array.erase(it); //the pollen is destroy when it is used for breed
             }
         }
@@ -160,14 +160,14 @@ void GameState::breeding_animals(AnimalSpecie* female, AnimalSpecie* male)
     }
 }
 
-void GameState::breeding_vegetables(VegetableSpecie *female)
+void GameState::breeding_plants(PlantSpecie *female)
 {
     int pos_x = -1, pos_y = -1;
     bool valid_pos = generate_position_new_born(female, pos_x, pos_y);
     if(valid_pos == false) //false <=> not valide position for the new born, abord
         return; //if there is not place to go, abord
 
-    VegetableSpecie* new_born = female->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
+    PlantSpecie* new_born = female->breed(animals_array.size()+vegans_array.size(), pos_x, pos_y);
     if(new_born != nullptr)
         vegans_array.push_back(new_born);
 }
@@ -207,9 +207,9 @@ void GameState::init_test_game()
     animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_1, Test::animal_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
     animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_2, Test::animal_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
     animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_3, Test::animal_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Male) );
-    vegans_array.push_back(new VegetableSpecie(Test::vegetable_specie_x_1, Test::vegetable_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
-    vegans_array.push_back(new VegetableSpecie(Test::vegetable_specie_x_2, Test::vegetable_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
-    vegans_array.push_back(new VegetableSpecie(Test::vegetable_specie_x_3, Test::vegetable_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Female) );
+    vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_1, Test::plant_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
+    vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_2, Test::plant_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
+    vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_3, Test::plant_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Female) );
 }
 
 void GameState::clear_array()
@@ -247,16 +247,16 @@ void GameState::test_breed() //used it after init_test_game !
 
     std::cout<<"after pushing animal"<<std::endl;
 
-    std::cout<<"before breeding vegetable"<<std::endl;
-    VegetableSpecie *new_born_v = vegans_array[0]->breed(animals_array.size()+vegans_array.size(), 800, 800); //the baby is sent to the coords (800,800)
-    std::cout<<"after breeding vegetable"<<std::endl;
+    std::cout<<"before breeding plant"<<std::endl;
+    PlantSpecie *new_born_v = vegans_array[0]->breed(animals_array.size()+vegans_array.size(), 800, 800); //the baby is sent to the coords (800,800)
+    std::cout<<"after breeding plant"<<std::endl;
 
     if(new_born_v == nullptr)
         std::cout<<"can't pushing, new_born is nullptr"<<std::endl;
     else
         vegans_array.push_back(new_born_v);
 
-    std::cout<<"after pushing vegetable"<<std::endl;
+    std::cout<<"after pushing plant"<<std::endl;
 }
 
 void GameState::test_collision()
@@ -268,5 +268,5 @@ void GameState::test_collision()
     animals_array.push_back(new AnimalSpecie(Test::collisiontest_2_x, Test::collisiontest_2_y, animals_array.size()+vegans_array.size(), Gender::Female) );
     animals_array.push_back(new AnimalSpecie(Test::collisiontest_3_x, Test::collisiontest_3_y, animals_array.size()+vegans_array.size(), Gender::Female) );
     animals_array.push_back(new AnimalSpecie(Test::collisiontest_4_x, Test::collisiontest_4_y, animals_array.size()+vegans_array.size(), Gender::Female) );
-    vegans_array.push_back(new VegetableSpecie(Test::collisiontest_5_x, Test::collisiontest_5_y, animals_array.size()+vegans_array.size(), Gender::Female) );
+    vegans_array.push_back(new PlantSpecie(Test::collisiontest_5_x, Test::collisiontest_5_y, animals_array.size()+vegans_array.size(), Gender::Female) );
 }

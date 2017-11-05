@@ -1,21 +1,21 @@
-#include "vegetal_specie.hpp"
+#include "plant_specie.hpp"
 
 //should never be used
-VegetableSpecie::VegetableSpecie() : Specie()
+PlantSpecie::PlantSpecie() : Specie()
 {
 
 }
 
-VegetableSpecie::VegetableSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, 30, g)
+PlantSpecie::PlantSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, 30, g)
 {
 
 }
 
-VegetableSpecie::~VegetableSpecie()
+PlantSpecie::~PlantSpecie()
 {}
 
 
-void VegetableSpecie::draw_sprite(QPainter *painter)
+void PlantSpecie::draw_sprite(QPainter *painter)
 {
     QBrush brush(Qt::darkGreen);
     if(gender == Gender::Female) //if female, change the color to green
@@ -27,28 +27,28 @@ void VegetableSpecie::draw_sprite(QPainter *painter)
 }
 
 
-void VegetableSpecie::change_behavior()
+void PlantSpecie::change_behavior()
 {
     //have to be changed when breeding work !
     action_state = Action::Breed;
 }
 
 
-VegetableSpecie* VegetableSpecie::breed(int num_species, int pos_x, int pos_y)
+PlantSpecie* PlantSpecie::breed(int num_species, int pos_x, int pos_y)
 {
     //this is the female which gives the birth and we need the other specie to be a male
     if(breedable == 0)
     {
-        VegetableSpecie* new_born;
+        PlantSpecie* new_born;
         int proba_M_F = rand()%2;
 
         //generate a x and y between -20 and 20 for the new_born (we don't want to be on the mother so x and y must be superior than |height/2|
         //int rand_x = generate_random_pos(40, 20, height/2), rand_y = generate_random_pos(40, 20, height/2);
 
         if(proba_M_F == 0)
-            new_born = new VegetableSpecie(pos_x, pos_y, num_species, Gender::Male);
+            new_born = new PlantSpecie(pos_x, pos_y, num_species, Gender::Male);
         else
-            new_born = new VegetableSpecie(pos_x, pos_y, num_species, Gender::Female);
+            new_born = new PlantSpecie(pos_x, pos_y, num_species, Gender::Female);
 
         breedable = Constant::BREEDED;
         action_state = Action::Rest;
@@ -58,7 +58,7 @@ VegetableSpecie* VegetableSpecie::breed(int num_species, int pos_x, int pos_y)
     return nullptr;
 }
 
-Pollen VegetableSpecie::send_pollen()
+Pollen PlantSpecie::send_pollen()
 {
     breedable = Constant::BREEDED;
     int rand_x = generate_random_pos(30, 15, 0), rand_y = generate_random_pos(30, 15, 0);
@@ -76,7 +76,7 @@ Pollen VegetableSpecie::send_pollen()
 }
 
 
-void VegetableSpecie::copulate()
+void PlantSpecie::copulate()
 {
     if(action_state != Action::Breed)
     {

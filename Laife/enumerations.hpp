@@ -37,12 +37,12 @@ namespace Test
     const int animal_specie_x_3 = 500;
     const int animal_specie_y_3 = 800;
 
-    const int vegetable_specie_x_1 = 480;
-    const int vegetable_specie_y_1 = 390;
-    const int vegetable_specie_x_2 = 520;
-    const int vegetable_specie_y_2 = 340;
-    const int vegetable_specie_x_3 = 800;
-    const int vegetable_specie_y_3 = 290;
+    const int plant_specie_x_1 = 480;
+    const int plant_specie_y_1 = 390;
+    const int plant_specie_x_2 = 520;
+    const int plant_specie_y_2 = 340;
+    const int plant_specie_x_3 = 800;
+    const int plant_specie_y_3 = 290;
 
     const int collisiontest_1_x = 200;
     const int collisiontest_1_y = 200;

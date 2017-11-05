@@ -27,18 +27,18 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     specie.cpp \
     animal_specie.cpp \
-    vegetal_specie.cpp \
     gamestate.cpp \
     general_functions.cpp \
-    pollen.cpp
+    pollen.cpp \
+    plant_specie.cpp
 
 HEADERS  += mainwindow.hpp \
     specie.hpp \
     animal_specie.hpp \
-    vegetal_specie.hpp \
     gamestate.hpp \
     enumerations.hpp \
     general_functions.hpp \
-    pollen.h
+    pollen.h \
+    plant_specie.hpp
 
 FORMS    += mainwindow.ui

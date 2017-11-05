@@ -15,7 +15,7 @@ public:
 
     void draw_sprite(QPainter *painter);
     void move();
-    bool is_hitting_vegetable(int x_veg, int y_veg);
+    bool is_hitting_plant(int x_veg, int y_veg);
 
 
 private:
