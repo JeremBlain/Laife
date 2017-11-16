@@ -28,6 +28,7 @@ public:
 
     // GETTER & SETTER
     Gender get_gender();
+    int get_move_step();
     int get_breedable();
     Action get_action_state();
     int get_x();

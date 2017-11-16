@@ -10,7 +10,10 @@ void GameState::move()
     {
         if(specie->get_action_state() == Action::Move)
         {
-            specie->compute_direction();
+            //if the move step is 0, we need to recompute the direction
+            if(specie->get_move_step() == 0)
+                specie->compute_direction();
+
             if(collision(specie) == false)
                 specie->move( Constant::SPEED );
         }

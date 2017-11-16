@@ -4,13 +4,13 @@
  *
  * */
 
-Specie::Specie() : x(100), y(100), action_state(Action::Rest), pos_x_reach(x), pos_y_reach(y), dx(0), dy(0), ID(0),
+Specie::Specie() : x(100), y(100), action_state(Action::Rest), pos_x_reach(x), pos_y_reach(y), dx(0), dy(0), move_step(0), ID(0),
                    weight(10), height(24), gender(Gender::Male), age(0), breedable(0)
 {
 
 }
 
-Specie::Specie(int pos_x, int pos_y, int id, int h, Gender g) : x(pos_x), y(pos_y), action_state(Action::Rest), dx(0), dy(0), ID(id),
+Specie::Specie(int pos_x, int pos_y, int id, int h, Gender g) : x(pos_x), y(pos_y), action_state(Action::Rest), dx(0), dy(0), move_step(0), ID(id),
                                        weight(10), height(h), gender(g), age(0), breedable(0)
 {
     //default : the specie will reach a point near it
@@ -27,8 +27,17 @@ void Specie::compute_direction()
 {
     float dist = distance(pos_x_reach, pos_y_reach, x, y); //float for keeping the float operations after with dx and dy !
 
-    dx = (pos_x_reach - x)/dist;
-    dy = (pos_y_reach - y)/dist;
+    if(dist != 0)
+    {
+        dx = (pos_x_reach - x)/dist;
+        dy = (pos_y_reach - y)/dist;
+    }
+    else
+    {
+        dx = 0; dy = 0;
+    }
+
+    move_step = Constant::MOVE_STEP;
 }
 
 
@@ -42,6 +51,7 @@ void Specie::move(int speed)
             this->x += speed*dx;
             this->y += speed*dy;
         }
+
         if(dist < height)
             action_state = Action::Rest;
 }
@@ -116,6 +126,11 @@ void Specie::rest()
 Gender Specie::get_gender()
 {
     return gender;
+}
+
+int Specie::get_move_step()
+{
+    return move_step;
 }
 
 int Specie::get_breedable()
