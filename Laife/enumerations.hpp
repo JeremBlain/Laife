@@ -16,7 +16,8 @@ namespace Constant
 {
     const int NUMBER_ACTIONS = 10; //don't forget to update it when you add or remove an action... !
     const float PI = 3.1415;
-    const int SPEED = 3; //speed for mowvng
+    const int SPEED = 3; //speed for moving
+    const int MOVE_STEP = 20;
 
     const int BREEDED = 100;
     const int COPULATE = 50;
