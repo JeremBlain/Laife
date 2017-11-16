@@ -38,6 +38,9 @@ protected :
     Action action_state; //Behavior of the specie
     int pos_x_reach; //coordinates the specie want to reach
     int pos_y_reach;
+    int dx; //direction to move
+    int dy;
+    int move_step; //the move step is the number of movement (each tick) done before recompute the direction
     int number; //each individual have a number
 
 
