@@ -10,6 +10,7 @@ void GameState::move()
     {
         if(specie->get_action_state() == Action::Move)
         {
+            specie->compute_direction();
             if(collision(specie) == false)
                 specie->move( Constant::SPEED );
         }
@@ -191,10 +192,12 @@ void GameState::grow_old()
     for(auto &specie : animals_array)
     {
         specie->decrement_breedable();
+        specie->decrement_move_step();
     }
     for(auto &specie : vegans_array)
     {
         specie->decrement_breedable();
+        specie->decrement_move_step();
     }
 }
 

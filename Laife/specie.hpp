@@ -19,7 +19,9 @@ public:
     virtual Specie* breed(int num_species, int pos_x, int pos_y) = 0;
     virtual void copulate() = 0; //Spcie is now in breed state. This the step before the species mahe the new born
 
+    void compute_direction();
     void move(int speed);    
+    void decrement_move_step();
     bool collision(QRect obj_box, int obj_num); //if the specie collide to something (something with bounding box coords nt parameters
     void decrement_breedable();
     void rest();
@@ -39,8 +41,8 @@ protected :
 
     int pos_x_reach; //coordinates the specie want to reach
     int pos_y_reach;
-    int dx; //direction to move
-    int dy;
+    float dx; //direction to move
+    float dy;
     int move_step; //the move step is the number of movement (each tick) done before recompute the direction
 
     int ID; //each individual have a number

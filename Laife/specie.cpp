@@ -18,9 +18,19 @@ Specie::Specie(int pos_x, int pos_y, int id, int h, Gender g) : x(pos_x), y(pos_
     pos_y_reach = y + rand()%100-50;
 }
 
+
 Specie::~Specie()
 {
 }
+
+void Specie::compute_direction()
+{
+    float dist = distance(pos_x_reach, pos_y_reach, x, y); //float for keeping the float operations after with dx and dy !
+
+    dx = (pos_x_reach - x)/dist;
+    dy = (pos_y_reach - y)/dist;
+}
+
 
 void Specie::move(int speed)
 {
@@ -29,14 +39,17 @@ void Specie::move(int speed)
         //if dist = 0 we don't need to move, location is reached and we can rest ! otherwise we move
         if(dist != 0)
         {
-            float dx = (pos_x_reach - x)/dist;
-            float dy = (pos_y_reach - y)/dist;
-
             this->x += speed*dx;
             this->y += speed*dy;
         }
         if(dist < height)
             action_state = Action::Rest;
+}
+
+void Specie::decrement_move_step()
+{
+    if(move_step > 0) //move step's minimum is 0 !
+        --move_step;
 }
 
 /*
