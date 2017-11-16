@@ -27,7 +27,7 @@ bool GameState::collision(AnimalSpecie* animal)
     for(auto &species : animals_array)
     {
         if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
-                             species->get_number()))
+                             species->get_ID()))
         {
             return true;
         }
@@ -36,7 +36,7 @@ bool GameState::collision(AnimalSpecie* animal)
     for(auto &species : vegans_array)
     {
         if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
-                              species->get_number()))
+                              species->get_ID()))
             return true;
     }
 

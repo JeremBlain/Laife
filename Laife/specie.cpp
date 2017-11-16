@@ -4,13 +4,13 @@
  *
  * */
 
-Specie::Specie() : x(100), y(100), action_state(Action::Rest), pos_x_reach(x), pos_y_reach(y), number(0),
+Specie::Specie() : x(100), y(100), action_state(Action::Rest), pos_x_reach(x), pos_y_reach(y), dx(0), dy(0), ID(0),
                    weight(10), height(24), gender(Gender::Male), age(0), breedable(0)
 {
 
 }
 
-Specie::Specie(int pos_x, int pos_y, int n, int h, Gender g) : x(pos_x), y(pos_y), action_state(Action::Rest), number(n),
+Specie::Specie(int pos_x, int pos_y, int id, int h, Gender g) : x(pos_x), y(pos_y), action_state(Action::Rest), dx(0), dy(0), ID(id),
                                        weight(10), height(h), gender(g), age(0), breedable(0)
 {
     //default : the specie will reach a point near it
@@ -73,7 +73,7 @@ bool Specie::collision(int left_x, int top_y, int right_x, int bottom_y, int obj
 
 bool Specie::collision(QRect obj_box, int obj_num)
 {
-    if(obj_num == number)
+    if(obj_num == ID)
         return false;
 
     float dist = distance(pos_x_reach, pos_y_reach, x, y); //float for keeping the float operations after with dx and dy !
@@ -125,9 +125,9 @@ int Specie::get_y()
     return y;
 }
 
-int Specie::get_number()
+int Specie::get_ID()
 {
-    return number;
+    return ID;
 }
 
 int Specie::get_height()

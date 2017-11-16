@@ -10,7 +10,7 @@ class Specie
 {
 public:
     Specie();
-    Specie(int pos_x, int pos_y, int n, int h, Gender g);
+    Specie(int pos_x, int pos_y, int id, int h, Gender g);
 
     virtual ~Specie() = 0;
 
@@ -30,18 +30,20 @@ public:
     Action get_action_state();
     int get_x();
     int get_y();
-    int get_number();
+    int get_ID();
     int get_height();
 
 protected :
     int x, y; //coords
     Action action_state; //Behavior of the specie
+
     int pos_x_reach; //coordinates the specie want to reach
     int pos_y_reach;
     int dx; //direction to move
     int dy;
     int move_step; //the move step is the number of movement (each tick) done before recompute the direction
-    int number; //each individual have a number
+
+    int ID; //each individual have a number
 
 
     // Caracteristics :
