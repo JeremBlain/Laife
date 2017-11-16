@@ -14,8 +14,8 @@ void GameState::move()
             if(specie->get_move_step() == 0)
                 specie->compute_direction();
 
-            if(collision(specie) == false)
-                specie->move( Constant::SPEED );
+            avoid_collision(specie);
+            specie->move( Constant::SPEED );
         }
     }
 
@@ -26,14 +26,14 @@ void GameState::move()
         }
 }
 
-bool GameState::collision(AnimalSpecie* animal)
+void GameState::avoid_collision(AnimalSpecie* animal)
 {
     for(auto &species : animals_array)
     {
         if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
                              species->get_ID()))
         {
-            return true;
+            animal->change_direction_obstacle(species);
         }
     }
 
@@ -41,10 +41,10 @@ bool GameState::collision(AnimalSpecie* animal)
     {
         if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
                               species->get_ID()))
-            return true;
+        {
+            animal->change_direction_obstacle(species);
+        }
     }
-
-    return false;
 }
 
 bool GameState::collision(QRect hitbox)

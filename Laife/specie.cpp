@@ -112,6 +112,19 @@ bool Specie::collision(QRect obj_box, int obj_num)
     return false;
 }
 
+void Specie::change_direction_obstacle(Specie *obstacle)
+{
+    int obs_x = obstacle->get_x(), obs_y = obstacle->get_y();
+    float dist = distance(x, x, obs_x, obs_y); //float for keeping the float operations after with dx and dy !
+
+    dx = -dy; //-(y - obs_y)/dist;
+    dy = dx; //(x-obs_y)/dist;
+
+    std::cout<<dx<<" "<<dy<<std::endl;
+
+    move_step = Constant::MOVE_STEP;
+}
+
 void Specie::decrement_breedable()
 {
     if(breedable > 0) //breedable's minimum is 0 !

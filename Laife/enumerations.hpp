@@ -17,12 +17,12 @@ namespace Constant
     const int NUMBER_ACTIONS = 10; //don't forget to update it when you add or remove an action... !
     const float PI = 3.1415;
     const int SPEED = 3; //speed for moving
-    const int MOVE_STEP = 20;
+    const int MOVE_STEP = 30;
 
     const int BREEDED = 100;
     const int COPULATE = 50;
     const int DISTANCE_MIN_FIND_PARTNER = 250;
-    const int DISTANCE_MAX_BREED = 30;
+    const int DISTANCE_MAX_BREED = 20;
 
     const int POLLEN_SIZE = 10;
 
