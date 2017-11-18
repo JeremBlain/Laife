@@ -65,8 +65,8 @@ void MainWindow::time_ring()
 {
     gameState.grow_old();
     gameState.find_partner();
-    gameState.move();
     gameState.breeding();
+    gameState.move();
     gameState.change_behavior();
 
     update();

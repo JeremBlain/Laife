@@ -6,7 +6,7 @@ PlantSpecie::PlantSpecie() : Specie()
 
 }
 
-PlantSpecie::PlantSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, 30, g)
+PlantSpecie::PlantSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, Constant::PLANTS_SIZE, g)
 {
 
 }

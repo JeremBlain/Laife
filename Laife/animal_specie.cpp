@@ -8,7 +8,7 @@ AnimalSpecie::AnimalSpecie() : Specie(),
                                  tiredness(100)
 {}
 
-AnimalSpecie::AnimalSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, 24, g),
+AnimalSpecie::AnimalSpecie(int pos_x, int pos_y, int n, Gender g) : Specie(pos_x, pos_y, n, Constant::ANIMALS_SIZE, g),
                                                      hunger(100), thirst(100), hapiness(100), tiredness(100)
 {
 

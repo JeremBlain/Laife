@@ -24,6 +24,8 @@ namespace Constant
     const int DISTANCE_MIN_FIND_PARTNER = 250;
     const int DISTANCE_MAX_BREED = 20;
 
+    const int ANIMALS_SIZE = 24;
+    const int PLANTS_SIZE = 30;
     const int POLLEN_SIZE = 10;
 
     const int TICK = 70; //millisecond
