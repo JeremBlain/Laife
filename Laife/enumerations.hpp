@@ -19,14 +19,14 @@ namespace Constant
     const int SPEED = 3; //speed for moving
     const int MOVE_STEP = 30;
 
-    const int BREEDED = 100;
-    const int COPULATE = 50;
-    const int DISTANCE_MIN_FIND_PARTNER = 250;
-    const int DISTANCE_MAX_BREED = 20;
-
     const int ANIMALS_SIZE = 24;
     const int PLANTS_SIZE = 30;
     const int POLLEN_SIZE = 10;
+
+    const int BREEDED = 100;
+    const int COPULATE = 50;
+    const int DISTANCE_MIN_FIND_PARTNER = 250;
+    const int DISTANCE_MAX_BREED = ANIMALS_SIZE + 5;
 
     const int TICK = 70; //millisecond
 }
