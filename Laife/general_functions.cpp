@@ -15,6 +15,11 @@ float distance(int x1, int y1, int x2, int y2)
 }
 
 
+float distance_squared(int x1, int y1, int x2, int y2)
+{
+    return (x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1);
+}
+
 
 int generate_random_pos(int max, int offset, int excluded)
 {
@@ -24,3 +29,4 @@ int generate_random_pos(int max, int offset, int excluded)
 
     return rand_number;
 }
+
