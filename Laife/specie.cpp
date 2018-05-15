@@ -62,51 +62,16 @@ void Specie::decrement_move_step()
         --move_step;
 }
 
-/*
-bool Specie::collision(int left_x, int top_y, int right_x, int bottom_y, int obj_num)
+
+bool Specie::collision(int x_obj, int y_obj, int radius_obj, int obj_num)
 {
-    if(number == obj_num) //if the specie is the same as the specie sent
+    if(obj_num == ID) //don't want to know if it's collide with itself.... it will
         return false;
 
-    float dist = distance(pos_x_reach, pos_y_reach, x, y); //float for keeping the float operations after with dx and dy !
+    float dist_squared = distance_squared(x+dx*Constant::SPEED, y+dy*Constant::SPEED, x_obj, y_obj);
 
-    float dx = (pos_x_reach - x)/dist;
-    float dy = (pos_y_reach - y)/dist;
-
-    int bound_x=0, bound_y=0;
-
-    if(dx > 0)
-        bound_x = x+dx*Constant::SPEED+height/2.0;
-    else
-        bound_x = x+dx*Constant::SPEED-height/2.0;
-
-    if(dy > 0)
-        bound_y = y+dy*Constant::SPEED+height/2.0;
-    else
-        bound_y = y+dy*Constant::SPEED-height/2.0;
-
-
-    //if the next step the specie is on the bouding box of something else
-    if( (bound_x >= left_x && bound_x <= right_x) && (bound_y >= top_y && bound_y <= bottom_y) )
-        return true;
-
-    return false;
-}*/
-
-
-bool Specie::collision(QRect obj_box, int obj_num)
-{
-    if(obj_num == ID)
-        return false;
-
-    float dist = distance(pos_x_reach, pos_y_reach, x, y); //float for keeping the float operations after with dx and dy !
-
-    float dx = (pos_x_reach - x)/dist;
-    float dy = (pos_y_reach - y)/dist;
-
-    QRect self_box(x+dx*Constant::SPEED-height/2.0, y+dy*Constant::SPEED-height/2.0, height, height);
-
-    if(self_box.intersects(obj_box) == true)
+    // 2 disks intersect if distance between their centers are less than the sum of their radius (d <= r1+r2 )
+    if(dist_squared <= (height/2 + radius_obj + Constant::OFFSET_COLLISION) * (height/2 + radius_obj + Constant::OFFSET_COLLISION) )
         return true;
 
     return false;
@@ -117,9 +82,26 @@ void Specie::change_direction_obstacle(Specie *obstacle)
     int obs_x = obstacle->get_x(), obs_y = obstacle->get_y();
     float dist = distance(x, y, obs_x, obs_y); //float for keeping the float operations after with dx and dy !
 
-
     dx = -(y - obs_y)/dist;
     dy = (x-obs_x)/dist;
+
+    //if the specie collide the obstacle even with the 90° turn, turn it the opposite way !
+    if(this->collision(obs_x, obs_y, obstacle->get_height()/2, obstacle->get_ID()))
+    {
+        dx = (y - obs_y)/dist;
+        dy = -(x-obs_x)/dist;
+
+        //if the specie collide again (striaght, left and right... go where you came from !...
+        if(this->collision(obs_x, obs_y, obstacle->get_height()/2, obstacle->get_ID()))
+        {
+            dx = -dx; dy = -dy;
+
+            //finally, if there is no way out... stay here
+            if(this->collision(obs_x, obs_y, obstacle->get_height()/2, obstacle->get_ID()))
+               dx = 0; dy = 0;
+        }
+    }
+
 
     move_step = Constant::MOVE_STEP;
 }

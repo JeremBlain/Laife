@@ -22,9 +22,9 @@ public:
 
     //test all entities to avoid collisison with animal. Should be used when moving and it modfies the direction of movement. return true if a collision is detected and avoided.
     void avoid_collision(AnimalSpecie *animal);
-    //test all entities to avoid collisison with hitbox. The num_species is the number linkled with the hitbox entities
+    //test all entities to avoid collisison with hitbox. The num_species is the number linked with the hitbox entities
     //this one should be used when create a new entities !
-    bool collision(QRect hitbox);
+    bool collision(int x_obj, int y_obj, int radius_obj);
 
     bool generate_position_new_born(Specie *mother, int &pos_x, int &pos_y); //generate a position which do not collide with other entities
 

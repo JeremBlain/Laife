@@ -26,12 +26,14 @@ void GameState::move()
         }
 }
 
-void GameState::avoid_collision(AnimalSpecie* animal)
+
+//** Collision with circles hitbox instead of square
+
+void GameState::avoid_collision(AnimalSpecie *animal)
 {
     for(auto &species : animals_array)
     {
-        if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
-                             species->get_ID()))
+        if(animal->collision(species->get_x(), species->get_y(), species->get_height()/2, species->get_ID()) )
         {
             animal->change_direction_obstacle(species);
         }
@@ -39,29 +41,31 @@ void GameState::avoid_collision(AnimalSpecie* animal)
 
     for(auto &species : vegans_array)
     {
-        if(animal->collision(QRect( species->get_x()-species->get_height()/2.0, species->get_y()-species->get_height()/2.0, species->get_height(), species->get_height() ),
-                              species->get_ID()))
+        if(animal->collision(species->get_x(), species->get_y(), species->get_height()/2, species->get_ID()) )
         {
             animal->change_direction_obstacle(species);
         }
     }
 }
 
-bool GameState::collision(QRect hitbox)
+bool GameState::collision(int x_obj, int y_obj, int radius_obj)
 {
     for(auto &species : animals_array)
     {
-        QRect obj_box(species->get_x()-species->get_height()/2, species->get_y()-species->get_height()/2, species->get_height(), species->get_height());
+        float dist_squared = distance_squared(x_obj, y_obj, species->get_x(), species->get_y());
 
-        if(hitbox.intersects(obj_box) == true)
+        // 2 disks intersect if distance between their centers are less than the sum of their radius (d <= r1+r2 )
+        if(dist_squared <= (radius_obj + 3 + species->get_height()/2) * (radius_obj + 3 + species->get_height()/2) )
             return true;
     }
 
+
     for(auto &species : vegans_array)
     {
-        QRect obj_box(species->get_x()-species->get_height()/2, species->get_y()-species->get_height()/2, species->get_height(), species->get_height());
+        float dist_squared = distance_squared(x_obj, y_obj, species->get_x(), species->get_y());
 
-        if(hitbox.intersects(obj_box) == true)
+        // 2 disks intersect if distance between their centers are less than the sum of their radius (d <= r1+r2 )
+        if(dist_squared <= (radius_obj + species->get_height()/2) * (radius_obj +species->get_height()/2) )
             return true;
     }
 
@@ -76,9 +80,9 @@ bool GameState::generate_position_new_born(Specie* mother, int &pos_x, int &pos_
 
     do //make a position for the new born
     {
-        rand_x = generate_random_pos(80, 40, height), rand_y = generate_random_pos(80, 40, height/2);
+        rand_x = generate_random_pos(80, 40, height/2), rand_y = generate_random_pos(80, 40, height/2);
         ++it;
-    }while(collision(QRect(mother->get_x()+rand_x-height/2, mother->get_y()+rand_y-height/2, height, height)) && it < 15);
+    }while(collision(mother->get_x()+rand_x, mother->get_y()+rand_y, height/2) && it < 15);
 
     if(it < 15) //if it == 15 so we get out of the while without having a valide position for the newx born, so we return false !
     {
@@ -213,6 +217,8 @@ void GameState::init_test_game()
     animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_1, Test::animal_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
     animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_2, Test::animal_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
     animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_3, Test::animal_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Male) );
+    animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_4, Test::animal_specie_y_4, animals_array.size()+vegans_array.size(), Gender::Female) );
+    animals_array.push_back(new AnimalSpecie(Test::animal_specie_x_5, Test::animal_specie_y_5, animals_array.size()+vegans_array.size(), Gender::Male) );
     vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_1, Test::plant_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
     vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_2, Test::plant_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
     vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_3, Test::plant_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Female) );

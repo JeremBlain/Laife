@@ -26,9 +26,10 @@ namespace Constant
     const int BREEDED = 100;
     const int COPULATE = 50;
     const int DISTANCE_MIN_FIND_PARTNER = 250;
-    const int DISTANCE_MAX_BREED = ANIMALS_SIZE + 5;
+    const int DISTANCE_MAX_BREED = ANIMALS_SIZE + 10;
+    const int OFFSET_COLLISION = 5;
 
-    const int TICK = 70; //millisecond
+    const int TICK = 30; //millisecond
 }
 
 namespace Test
@@ -39,6 +40,10 @@ namespace Test
     const int animal_specie_y_2 = 450;
     const int animal_specie_x_3 = 500;
     const int animal_specie_y_3 = 800;
+    const int animal_specie_x_4 = 250;
+    const int animal_specie_y_4 = 460;
+    const int animal_specie_x_5 = 250;
+    const int animal_specie_y_5 = 510;
 
     const int plant_specie_x_1 = 480;
     const int plant_specie_y_1 = 390;
@@ -50,13 +55,13 @@ namespace Test
     const int collisiontest_1_x = 200;
     const int collisiontest_1_y = 200;
 
-    const int collisiontest_2_x = 260;
+    const int collisiontest_2_x = 240;
     const int collisiontest_2_y = 200;
 
     const int collisiontest_3_x = 200;
     const int collisiontest_3_y = 260;
 
-    const int collisiontest_4_x = 260;
+    const int collisiontest_4_x = 240;
     const int collisiontest_4_y = 260;
 
     const int collisiontest_5_x = 230;

@@ -14,7 +14,7 @@ float distance(int x1, int y1, int x2, int y2);
 /*this function compute the L2, but squared, be careful
  * The reason is : don't need the sqrt function, so more efficient and don't need math library
  */
-float distance_squared(int x1, int y1, int x2,int y2);
+float distance_squared(int x1, int y1, int x2, int y2);
 
 //creates a randomly generated number between -max-offset and max-offset, excluded numbers between -excluded and excluded
 int generate_random_pos(int max, int offset, int excluded);

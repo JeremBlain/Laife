@@ -52,7 +52,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     switch(event->key())
     {
         case Qt::Key_R :
-        gameState.init_test_game();
+        gameState.test_collision();
         break;
 
         default:

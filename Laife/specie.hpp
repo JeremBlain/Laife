@@ -22,7 +22,7 @@ public:
     void compute_direction();
     void move(int speed);    
     void decrement_move_step();
-    bool collision(QRect obj_box, int obj_num); //if the specie collide to something (something with bounding box coords nt parameters
+    bool collision(int x_obj, int y_obj, int radius_obj, int obj_num); //if the specie collide with something (something with bounding box coords not parameters)
     void change_direction_obstacle(Specie *obstacle); //change the direction of the specie according to the position of the obstacle
 
     void decrement_breedable();
