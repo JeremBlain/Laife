@@ -6,6 +6,7 @@
 
 #include "animal_specie.hpp"
 #include "plant_specie.hpp"
+#include "food.hpp"
 
 
 class GameState
@@ -16,6 +17,7 @@ public:
     std::vector<AnimalSpecie*> animals_array;
     std::vector<PlantSpecie*> vegans_array;
     std::vector<Pollen> pollens_array;
+    std::vector<Food> food_array;
 
     //all these methods check if the species have the correct behavior (ex : move() check if the behavior of species is Move)
     void move(); //move all the animals species

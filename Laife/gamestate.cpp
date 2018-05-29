@@ -222,6 +222,9 @@ void GameState::init_test_game()
     vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_1, Test::plant_specie_y_1, animals_array.size()+vegans_array.size(), Gender::Female) );
     vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_2, Test::plant_specie_y_2, animals_array.size()+vegans_array.size(), Gender::Male) );
     vegans_array.push_back(new PlantSpecie(Test::plant_specie_x_3, Test::plant_specie_y_3, animals_array.size()+vegans_array.size(), Gender::Female) );
+    food_array.push_back(Food(Test::food_x_1, Test::food_y_1) );
+    food_array.push_back(Food(Test::food_x_2, Test::food_y_2) );
+    food_array.push_back(Food(Test::food_x_3, Test::food_y_3) );
 }
 
 void GameState::clear_array()

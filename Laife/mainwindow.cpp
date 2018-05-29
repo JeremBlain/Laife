@@ -40,6 +40,11 @@ void MainWindow::paintEvent(QPaintEvent *event)
         specie->draw_sprite(&painter);
     }
 
+    for(auto food : gameState.food_array)
+    {
+        food.draw_sprite(&painter);
+    }
+
     if(!gameState.pollens_array.empty())
         for(auto &pollen : gameState.pollens_array)
         {
