@@ -22,6 +22,7 @@ namespace Constant
     const int ANIMALS_SIZE = 24;
     const int PLANTS_SIZE = 30;
     const int POLLEN_SIZE = 10;
+    const int FOOD_SIZE = 15;
 
     const int BREEDED = 100;
     const int COPULATE = 50;
