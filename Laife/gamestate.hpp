@@ -19,8 +19,10 @@ public:
     std::vector<Pollen> pollens_array;
     std::vector<Food> food_array;
 
-    //all these methods check if the species have the correct behavior (ex : move() check if the behavior of species is Move)
+    //all these methods check if the species have the correct behavior before doing actions (ex : move() check if the behavior of species is Move)
     void move(); //move all the animals species
+
+    void eat();
 
     //test all entities to avoid collisison with animal. Should be used when moving and it modfies the direction of movement. return true if a collision is detected and avoided.
     void avoid_collision(AnimalSpecie *animal);

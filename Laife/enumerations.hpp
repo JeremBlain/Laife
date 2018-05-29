@@ -28,6 +28,7 @@ namespace Constant
     const int COPULATE = 50;
     const int DISTANCE_MIN_FIND_PARTNER = 250;
     const int DISTANCE_MAX_BREED = ANIMALS_SIZE + 10;
+    const int DISTANCE_MAX_EAT = 25;
     const int OFFSET_COLLISION = 5;
 
     const int TICK = 30; //millisecond

@@ -13,7 +13,6 @@ public:
 
     void draw_sprite(QPainter *painter);
 
-private:
     int x,y; //positions
 };
 

@@ -3,6 +3,7 @@
 
 
 #include "specie.hpp"
+#include "food.hpp"
 
 class AnimalSpecie : public Specie
 {
@@ -21,6 +22,9 @@ public:
     //Check the animals species array and take the first species that is close enough
     //then we set the position to reach
     void find_partner(std::vector<AnimalSpecie *> &animals_array);
+
+    //a function that return the iterator of the food which were eaten
+    void eat(std::vector<Food> &food_array);
 
 private :
 

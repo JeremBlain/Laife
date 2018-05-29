@@ -103,3 +103,15 @@ void AnimalSpecie::find_partner(std::vector<AnimalSpecie *> &animals_array)
         }
     }
 }
+
+void AnimalSpecie::eat(std::vector<Food> &food_array)
+{
+    for(auto it = food_array.begin(); it < food_array.end(); ++it)
+    {
+        if(distance(x, y, it->x, it->y) < Constant::DISTANCE_MAX_EAT)
+        {
+            std::cout<<it->x<<std::endl;
+            food_array.erase(it);
+        }
+    }
+}

@@ -72,6 +72,7 @@ void MainWindow::time_ring()
     gameState.find_partner();
     gameState.breeding();
     gameState.move();
+    gameState.eat();
     gameState.change_behavior();
 
     update();

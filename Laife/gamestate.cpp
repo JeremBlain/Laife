@@ -26,6 +26,14 @@ void GameState::move()
         }
 }
 
+void GameState::eat()
+{
+    for(auto &specie : animals_array)
+    {
+        specie->eat(food_array);
+    }
+}
+
 
 //** Collision with circles hitbox instead of square
 
