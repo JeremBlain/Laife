@@ -5,6 +5,11 @@ Food::Food()
 
 }
 
+Food::Food(int pos_x, int pos_y) : x(pos_x), y(pos_y) {}
+
+Food::~Food()
+{}
+
 void Food::draw_sprite(QPainter *painter)
 {
     QBrush brush(Qt::blue);

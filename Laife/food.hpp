@@ -8,6 +8,9 @@ class Food
 {
 public:
     Food();
+    Food(int pos_x, int pos_y);
+    ~Food();
+
     void draw_sprite(QPainter *painter);
 
 private:
