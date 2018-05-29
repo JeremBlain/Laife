@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\specie.o
+./release\animal_specie.o
+./release\gamestate.o
+./release\general_functions.o
+./release\pollen.o
+./release\plant_specie.o
+./release\food.o
+./release\moc_mainwindow.o
+);

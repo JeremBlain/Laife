@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\specie.o
+./debug\animal_specie.o
+./debug\gamestate.o
+./debug\general_functions.o
+./debug\pollen.o
+./debug\plant_specie.o
+./debug\food.o
+./debug\moc_mainwindow.o
+);

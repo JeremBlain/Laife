@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     gamestate.cpp \
     general_functions.cpp \
     pollen.cpp \
-    plant_specie.cpp
+    plant_specie.cpp \
+    food.cpp
 
 HEADERS  += mainwindow.hpp \
     specie.hpp \
@@ -39,6 +40,7 @@ HEADERS  += mainwindow.hpp \
     enumerations.hpp \
     general_functions.hpp \
     pollen.h \
-    plant_specie.hpp
+    plant_specie.hpp \
+    food.hpp
 
 FORMS    += mainwindow.ui
